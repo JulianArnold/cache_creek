@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @vent_log.organization %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @vent_log.contact %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @vent_log.notes %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @vent_log.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @vent_log.email %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @vent_log.source %>
+</p>
+
+<p>
+  <strong>Cv sent:</strong>
+  <%= @vent_log.cv_sent %>
+</p>
+
+<p>
+  <strong>Interest:</strong>
+  <%= @vent_log.interest %>
+</p>
+
+<p>
+  <strong>Cv version:</strong>
+  <%= @vent_log.cv_version %>
+</p>
+
+<%= link_to 'Edit', edit_vent_log_path(@vent_log) %> |
+<%= link_to 'Back', vent_logs_path %>

@@ -1,0 +1,1 @@
+json.array! @vent_logs, partial: 'vent_logs/vent_log', as: :vent_log
