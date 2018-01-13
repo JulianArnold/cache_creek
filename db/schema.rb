@@ -11,20 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817180539) do
-
-  create_table "vent_logs", force: :cascade do |t|
-    t.string   "organization"
-    t.string   "contact"
-    t.string   "notes"
-    t.integer  "phone"
-    t.string   "email"
-    t.string   "source"
-    t.string   "cv_sent"
-    t.string   "interest"
-    t.string   "cv_version"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

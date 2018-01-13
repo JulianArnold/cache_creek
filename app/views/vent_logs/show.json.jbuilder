@@ -1,1 +1,0 @@
-json.partial! "vent_logs/vent_log", vent_log: @vent_log
