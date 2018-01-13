@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing People</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Organisation</th>
+      <th>Linkedin profile url</th>
+      <th>Next contact on</th>
+      <th>Source of contact</th>
+      <th>Cv sent on</th>
+      <th>Cv version</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.first_name %></td>
+        <td><%= person.last_name %></td>
+        <td><%= person.email %></td>
+        <td><%= person.phone %></td>
+        <td><%= person.organisation_id %></td>
+        <td><%= person.linkedin_profile_url %></td>
+        <td><%= person.next_contact_on %></td>
+        <td><%= person.source_of_contact %></td>
+        <td><%= person.cv_sent_on %></td>
+        <td><%= person.cv_version %></td>
+        <td><%= person.status %></td>
+        <td><%= link_to 'Show', person %></td>
+        <td><%= link_to 'Edit', edit_person_path(person) %></td>
+        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Person', new_person_path %>

@@ -1,0 +1,61 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :organisation_id %><br>
+    <%= f.number_field :organisation_id %>
+  </div>
+  <div class="field">
+    <%= f.label :linkedin_profile_url %><br>
+    <%= f.text_field :linkedin_profile_url %>
+  </div>
+  <div class="field">
+    <%= f.label :next_contact_on %><br>
+    <%= f.date_select :next_contact_on %>
+  </div>
+  <div class="field">
+    <%= f.label :source_of_contact %><br>
+    <%= f.text_field :source_of_contact %>
+  </div>
+  <div class="field">
+    <%= f.label :cv_sent_on %><br>
+    <%= f.date_select :cv_sent_on %>
+  </div>
+  <div class="field">
+    <%= f.label :cv_version %><br>
+    <%= f.text_field :cv_version %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

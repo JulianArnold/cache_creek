@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @person.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @person.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @person.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @person.phone %>
+</p>
+
+<p>
+  <strong>Organisation:</strong>
+  <%= @person.organisation_id %>
+</p>
+
+<p>
+  <strong>Linkedin profile url:</strong>
+  <%= @person.linkedin_profile_url %>
+</p>
+
+<p>
+  <strong>Next contact on:</strong>
+  <%= @person.next_contact_on %>
+</p>
+
+<p>
+  <strong>Source of contact:</strong>
+  <%= @person.source_of_contact %>
+</p>
+
+<p>
+  <strong>Cv sent on:</strong>
+  <%= @person.cv_sent_on %>
+</p>
+
+<p>
+  <strong>Cv version:</strong>
+  <%= @person.cv_version %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @person.status %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
