@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :organisation_id %><br>
-    <%= f.number_field :organisation_id %>
+    <%= f.collection_select :organisation_id, @organisations, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :linkedin_profile_url %><br>
@@ -45,7 +45,7 @@
   </div>
   <div class="field">
     <%= f.label :cv_sent_on %><br>
-    <%= f.date_select :cv_sent_on %>
+    <%= f.text_field :cv_sent_on %>
   </div>
   <div class="field">
     <%= f.label :cv_version %><br>
@@ -53,7 +53,7 @@
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.select :status, Person::STATUSES %>
   </div>
   <div class="actions">
     <%= f.submit %>

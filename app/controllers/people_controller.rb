@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_action :set_variables, except: [:index, :destroy]
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
@@ -14,7 +15,7 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
-    @person = Person.new
+    @person = Person.new(status: Person::STATUSES.first)
   end
 
   # GET /people/1/edit
@@ -70,5 +71,9 @@ class PeopleController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
       params.require(:person).permit(:first_name, :last_name, :email, :phone, :organisation_id, :linkedin_profile_url, :next_contact_on, :source_of_contact, :cv_sent_on, :cv_version, :status)
+    end
+
+    def set_variables
+      @organisations = Organisation.order(:name)
     end
 end
