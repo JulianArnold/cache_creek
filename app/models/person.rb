@@ -22,6 +22,7 @@ class Person < ActiveRecord::Base
   STATUSES = ['New', 'Not Interested', 'Active', 'Dormant', 'Closed'].freeze
 
   belongs_to :organisation
+  has_many :opportunities
   validates :first_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :organisation_id, presence: true

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Organisation:</strong>
+  <%= @opportunity.organisation_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @opportunity.person_id %>
+</p>
+
+<p>
+  <strong>Job title:</strong>
+  <%= @opportunity.job_title %>
+</p>
+
+<p>
+  <strong>Job description:</strong>
+  <%= @opportunity.job_description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @opportunity.category %>
+</p>
+
+<%= link_to 'Edit', edit_opportunity_path(@opportunity) %> |
+<%= link_to 'Back', opportunities_path %>
