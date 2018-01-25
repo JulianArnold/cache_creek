@@ -1,5 +1,8 @@
 class OpportunitiesController < ApplicationController
+  before_action :set_variables, except: [:index, :destroy]
   before_action :set_opportunity, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_people, only: [:new, :edit, :create, :update]
 
   # GET /opportunities
   # GET /opportunities.json
@@ -56,7 +59,7 @@ class OpportunitiesController < ApplicationController
   def destroy
     @opportunity.destroy
     respond_to do |format|
-      format.html { redirect_to opportunities_url, notice: 'Opportunity was successfully destroyed.' }
+      format.html { redirect_to opportunities_url, notice: 'Opportunity was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -70,5 +73,13 @@ class OpportunitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def opportunity_params
       params.require(:opportunity).permit(:organisation_id, :person_id, :job_title, :job_description, :category)
+    end
+
+    def set_variables
+      @organisations = Organisation.order(:name)
+    end
+
+    def set_people
+      @people = Person.order(:last_name, :first_name)
     end
 end

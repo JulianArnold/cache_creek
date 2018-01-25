@@ -13,12 +13,14 @@
 
   <div class="field">
     <%= f.label :organisation_id %><br>
-    <%= f.number_field :organisation_id %>
+    <%= f.collection_select :organisation_id, @organisations, :id, :name %>
   </div>
+
   <div class="field">
     <%= f.label :person_id %><br>
-    <%= f.number_field :person_id %>
+    <%= f.collection_select :person_id, @people, :id, :full_name %>
   </div>
+
   <div class="field">
     <%= f.label :job_title %><br>
     <%= f.text_field :job_title %>
@@ -35,3 +37,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+

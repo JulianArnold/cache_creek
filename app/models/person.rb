@@ -27,4 +27,8 @@ class Person < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :organisation_id, presence: true
   validates :status, presence: true, inclusion: { in: STATUSES }
+
+  def full_name
+    first_name + ' ' + last_name
+  end
 end

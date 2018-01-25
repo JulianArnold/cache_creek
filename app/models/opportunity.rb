@@ -15,8 +15,8 @@
 class Opportunity < ActiveRecord::Base
   belongs_to :organisation
   belongs_to :person
-  validates :organisation_id
-  validates :person_id
-  validates :job_title
-  validates :job_description
+  validates :organisation_id, presence: true
+  validates :person_id, presence: true
+  validates :job_title, presence: true
+  validates :job_description, presence: true
 end
