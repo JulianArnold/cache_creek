@@ -19,4 +19,10 @@ class Opportunity < ActiveRecord::Base
   validates :person_id, presence: true
   validates :job_title, presence: true
   validates :job_description, presence: true
+  validate :match_organisation_to_person
+
+  def match_organisation_to_person
+    errors.add(:organisation_id, 'person unmatched with organisation') unless
+         organisation_id == person.organisation_id
+  end
 end
