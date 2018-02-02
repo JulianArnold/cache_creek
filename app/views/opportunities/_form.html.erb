@@ -38,3 +38,25 @@
   </div>
 <% end %>
 
+<script>
+  var people = <%= raw(sanitize(@people.map { |person| { id: person.id, name: person.full_name, organisation_id: person.organisation_id } }.to_json, tags: [])) %>;
+  var peopleSelectTag = $("#opportunity_person_id");
+
+  function refreshPeople(orgId) {
+    var results = "";
+    for (var i = 0; i < people.length; i++) {
+      var person = people[i];
+      if (person.organisation_id == orgId) {
+        results += "<option value='" + person.id + "'>" + person.name + "</option>"
+      }
+    }
+    peopleSelectTag.html(results);
+  }
+
+  $(document).on("ready", function() {
+    refreshPeople($("#opportunity_organisation_id").val());
+    $("#opportunity_organisation_id").on("change", function() {
+      refreshPeople($(this).val());
+    });
+  });
+</script>
