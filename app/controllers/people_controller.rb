@@ -1,17 +1,16 @@
 class PeopleController < ApplicationController
-  before_action :set_variables, except: [:index, :destroy]
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :set_variables, except: %i[index destroy]
+  before_action :set_person, only: %i[show edit update destroy]
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.order(next_contact_on: :desc).all
   end
 
   # GET /people/1
   # GET /people/1.json
-  def show
-  end
+  def show; end
 
   # GET /people/new
   def new
@@ -19,8 +18,7 @@ class PeopleController < ApplicationController
   end
 
   # GET /people/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /people
   # POST /people.json
@@ -63,17 +61,18 @@ class PeopleController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_person
-      @person = Person.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def person_params
-      params.require(:person).permit(:first_name, :last_name, :email, :phone, :organisation_id, :linkedin_profile_url, :next_contact_on, :source_of_contact, :cv_sent_on, :cv_version, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_person
+    @person = Person.find(params[:id])
+  end
 
-    def set_variables
-      @organisations = Organisation.order(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def person_params
+    params.require(:person).permit(:first_name, :last_name, :email, :phone, :organisation_id, :linkedin_profile_url, :next_contact_on, :source_of_contact, :cv_sent_on, :cv_version, :status)
+  end
+
+  def set_variables
+    @organisations = Organisation.order(:name)
+  end
 end

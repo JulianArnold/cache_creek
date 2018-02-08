@@ -1,19 +1,18 @@
 class OpportunitiesController < ApplicationController
-  before_action :set_variables, except: [:index, :destroy]
-  before_action :set_opportunity, only: [:show, :edit, :update, :destroy]
+  before_action :set_variables, except: %i[index destroy]
+  before_action :set_opportunity, only: %i[show edit update destroy]
 
-  before_action :set_people, only: [:new, :edit, :create, :update]
+  before_action :set_people, only: %i[new edit create update]
 
   # GET /opportunities
   # GET /opportunities.json
   def index
-    @opportunities = Opportunity.all
+    @opportunities = Opportunity.order(updated_at: :desc).all
   end
 
   # GET /opportunities/1
   # GET /opportunities/1.json
-  def show
-  end
+  def show; end
 
   # GET /opportunities/new
   def new
@@ -21,8 +20,7 @@ class OpportunitiesController < ApplicationController
   end
 
   # GET /opportunities/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /opportunities
   # POST /opportunities.json
@@ -65,21 +63,22 @@ class OpportunitiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_opportunity
-      @opportunity = Opportunity.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def opportunity_params
-      params.require(:opportunity).permit(:organisation_id, :person_id, :job_title, :job_description, :category)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_opportunity
+    @opportunity = Opportunity.find(params[:id])
+  end
 
-    def set_variables
-      @organisations = Organisation.order(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def opportunity_params
+    params.require(:opportunity).permit(:organisation_id, :person_id, :job_title, :job_description, :category)
+  end
 
-    def set_people
-      @people = Person.order(:last_name, :first_name)
-    end
+  def set_variables
+    @organisations = Organisation.order(:name)
+  end
+
+  def set_people
+    @people = Person.order(:last_name, :first_name)
+  end
 end

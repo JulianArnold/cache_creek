@@ -1,17 +1,15 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.10' #20171201
-gem 'bootstrap-sass'
-gem 'rspec-rails'
-gem 'shoulda-matchers'
-gem 'shoulda-callback-matchers'
-gem 'slim'
-gem 'authlogic'
 gem 'aasm'
+gem 'authlogic'
+gem 'bootstrap-sass'
+gem 'rails', '4.2.10' # 20171201
+gem 'rspec-rails'
+gem 'shoulda-callback-matchers'
+gem 'shoulda-matchers'
+gem 'slim'
 gem 'stripe', '~> 1.44'
-
 
 # Use sqlite3 as the database for Active Record
 
@@ -44,10 +42,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'sqlite3'
-  gem 'rubocop'
   gem 'annotate'
+  gem 'brakeman'
+  gem 'byebug'
+  gem 'rubocop'
+  gem 'sqlite3'
 end
 
 group :development do

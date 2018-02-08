@@ -20,6 +20,7 @@
 
 class Person < ActiveRecord::Base
   STATUSES = ['New', 'Not Interested', 'Active', 'Dormant', 'Closed'].freeze
+  LABELS_FOR_STATUSES = { new: 'primary', not_interested: 'danger', active: 'success', dormant: 'warning', closed: 'default' }
 
   belongs_to :organisation
   has_many :opportunities

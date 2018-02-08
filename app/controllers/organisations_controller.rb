@@ -1,16 +1,15 @@
 class OrganisationsController < ApplicationController
-  before_action :set_organisation, only: [:show, :edit, :update, :destroy]
+  before_action :set_organisation, only: %i[show edit update destroy]
 
   # GET /organisations
   # GET /organisations.json
   def index
-    @organisations = Organisation.all
+    @organisations = Organisation.order(name: :asc).all
   end
 
   # GET /organisations/1
   # GET /organisations/1.json
-  def show
-  end
+  def show; end
 
   # GET /organisations/new
   def new
@@ -18,8 +17,7 @@ class OrganisationsController < ApplicationController
   end
 
   # GET /organisations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /organisations
   # POST /organisations.json
@@ -62,13 +60,14 @@ class OrganisationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_organisation
-      @organisation = Organisation.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def organisation_params
-      params.require(:organisation).permit(:name, :postal_address, :phone)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_organisation
+    @organisation = Organisation.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def organisation_params
+    params.require(:organisation).permit(:name, :postal_address, :phone)
+  end
 end

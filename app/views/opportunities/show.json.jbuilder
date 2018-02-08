@@ -1,1 +1,1 @@
-json.partial! "opportunities/opportunity", opportunity: @opportunity
+json.partial! 'opportunities/opportunity', opportunity: @opportunity

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Opportunities", type: :request do
-  describe "GET /opportunities" do
-    it "works! (now write some real specs)" do
+RSpec.describe 'Opportunities', type: :request do
+  describe 'GET /opportunities' do
+    it 'works! (now write some real specs)' do
       get opportunities_path
       expect(response).to have_http_status(200)
     end

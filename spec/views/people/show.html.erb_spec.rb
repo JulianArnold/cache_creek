@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe "people/show", type: :view do
+RSpec.describe 'people/show', type: :view do
   before(:each) do
     @person = assign(:person, Person.create!(
-      :first_name => "First Name",
-      :last_name => "Last Name",
-      :email => "Email",
-      :phone => "Phone",
-      :organisation_id => 2,
-      :linkedin_profile_url => "Linkedin Profile Url",
-      :source_of_contact => "Source Of Contact",
-      :cv_version => "Cv Version",
-      :status => "Status"
+                                first_name: 'First Name',
+                                last_name: 'Last Name',
+                                email: 'Email',
+                                phone: 'Phone',
+                                organisation_id: 2,
+                                linkedin_profile_url: 'Linkedin Profile Url',
+                                source_of_contact: 'Source Of Contact',
+                                cv_version: 'Cv Version',
+                                status: 'Status'
     ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/First Name/)
     expect(rendered).to match(/Last Name/)
