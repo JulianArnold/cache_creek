@@ -1,64 +1,59 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="page-header">
+      <h1><%= @person.full_name %></h1>
+      <p class="lead"><%= labels_for_status(@person.status) %></p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <h1>Name:</h1>
-  <%= @person.full_name %>
-</p>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th class="col-sm-3">Email</th>
+          <td class="col-sm-9"><%= mail_to @person.email %></td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td>
+            <%= phone_to @person.phone %> -
+            <%= sms_to @person.phone %>
+          </td>
+        </tr>
+        <tr>
+          <th>Organisation</th>
+          <td><%= link_to @person.organisation.name, @person.organisation %></td>
+        </tr>
+        <tr>
+          <th>LinkedIn Profile</th>
+          <td><%= linkedin_to @person.linkedin_profile_url %></td>
+        </tr>
+        <tr>
+          <th>Next Contact On</th>
+          <td><%= @person.next_contact_on&.strftime('%-d %b %Y') %></td>
+        </tr>
+        <tr>
+          <th>Source Of Contact</th>
+          <td><%= @person.source_of_contact %></td>
+        </tr>
+        <tr>
+          <th>CV Sent On</th>
+          <td><%= @person.cv_sent_on&.strftime('%-d %b %Y') %></td>
+        </tr>
+        <tr>
+          <th>CV Version</th>
+          <td><%= @person.cv_version %></td>
+        </tr>
+      </tbody>
+    </table>
 
-<p>
-  <strong>First name:</strong>
-  <%= @person.first_name %>
-</p>
+    <br />
 
-<p>
-  <strong>Last name:</strong>
-  <%= @person.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @person.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @person.phone %>
-</p>
-
-<p>
-  <strong>Organisation:</strong>
-  <%= @person.organisation.name %>
-</p>
-
-<p>
-  <strong>Linkedin profile url:</strong>
-  <%= @person.linkedin_profile_url %>
-</p>
-
-<p>
-  <strong>Next contact on:</strong>
-  <%= @person.next_contact_on %>
-</p>
-
-<p>
-  <strong>Source of contact:</strong>
-  <%= @person.source_of_contact %>
-</p>
-
-<p>
-  <strong>Cv sent on:</strong>
-  <%= @person.cv_sent_on %>
-</p>
-
-<p>
-  <strong>Cv version:</strong>
-  <%= @person.cv_version %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @person.status %>
-</p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+    <div class="btn-group">
+      <%= link_to 'Edit', edit_person_path(@person), class: 'btn btn-success' %>
+      <%= link_to 'Back', people_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>

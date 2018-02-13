@@ -1,29 +1,46 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @opportunity.organisation.name %></h1>
 
-<p>
-  <strong>Organisation:</strong>
-  <%= @opportunity.organisation.name %>
-</p>
+<br />
 
-<p>
-  <strong>Person:</strong>
-  <%= @opportunity.person.first_name %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <strong>Person</strong>
+  </div>
+  <div class="col-sm-8">
+    <%= @opportunity.person.first_name %>
+  </div>
+</div>
 
-<p>
-  <strong>Job title:</strong>
-  <%= @opportunity.job_title %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <strong>Job title</strong>
+  </div>
+  <div class="col-sm-8">
+    <%= @opportunity.job_title %>
+  </div>
+</div>
 
-<p>
-  <strong>Job description:</strong>
-  <%= @opportunity.job_description %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <strong>Job description</strong>
+  </div>
+  <div class="col-sm-8">
+    <%= @opportunity.job_description %>
+  </div>
+</div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @opportunity.category %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <strong>Category</strong>
+  </div>
+  <div class="col-sm-8">
+    <%= @opportunity.category %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_opportunity_path(@opportunity) %> |
-<%= link_to 'Back', opportunities_path %>
+<br />
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_opportunity_path(@opportunity), class: 'btn btn-success' %>
+  <%= link_to 'Back', opportunities_path, class: 'btn btn-success' %>
+</div>

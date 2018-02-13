@@ -1,19 +1,28 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @organisation.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @organisation.name %>
-</p>
+<br />
 
-<p>
-  <strong>Postal address:</strong>
-  <%= @organisation.postal_address %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <strong>Postal address</strong>
+  </div>
+  <div class="col-sm-8">
+    <%= @organisation.postal_address %>
+  </div>
+</div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @organisation.phone %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <strong>Phone</strong>
+  </div>
+  <div class="col-sm-8">
+    <%= @organisation.phone %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_organisation_path(@organisation) %> |
-<%= link_to 'Back', organisations_path %>
+<br />
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_organisation_path(@organisation), class: 'btn btn-success' %>
+  <%= link_to 'Back', organisations_path, class: 'btn btn-success' %>
+</div>
