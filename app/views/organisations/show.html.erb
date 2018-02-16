@@ -1,28 +1,35 @@
-<h1><%= @organisation.name %></h1>
-
-<br />
-
 <div class="row">
-  <div class="col-sm-4">
-    <strong>Postal address</strong>
-  </div>
-  <div class="col-sm-8">
-    <%= @organisation.postal_address %>
+  <div class="col-sm-12">
+    <div class="page-header">
+      <h1><%= @organisation.name %></h1>
+    </div>
   </div>
 </div>
 
+
 <div class="row">
-  <div class="col-sm-4">
-    <strong>Phone</strong>
-  </div>
-  <div class="col-sm-8">
-    <%= @organisation.phone %>
-  </div>
-</div>
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th class="col-sm-3">Postal Address</th>
+          <td class="col-sm-9"><%= @organisation.postal_address %></td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td>
+            <%= phone_to @organisation.phone %> -
+            <%= sms_to @organisation.phone %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-<br />
+  <br />
 
-<div class="btn-group">
-  <%= link_to 'Edit', edit_organisation_path(@organisation), class: 'btn btn-success' %>
-  <%= link_to 'Back', organisations_path, class: 'btn btn-success' %>
+    <div class="btn-group">
+      <%= link_to 'Edit', edit_organisation_path(@organisation), class: 'btn btn-success' %>
+      <%= link_to 'Back', organisations_path, class: 'btn btn-success' %>
+    </div>
+  </div>
 </div>
