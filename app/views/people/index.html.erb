@@ -42,7 +42,8 @@
             <td>
               <%= mail_to person.email %>
               <br />
-              <%= phone_to person.phone %>
+              <%= phone_to person.phone %> -
+              <%= sms_to person.phone %>
             </td>
             <td><%= linkedin_to person.linkedin_profile_url %></td>
             <td><%= person.next_contact_on.strftime('%-d %b %Y') %></td>
