@@ -40,4 +40,14 @@ module ApplicationHelper
       concat(content_tag(:span, '', class: 'glyphicon glyphicon-new-window'))
     end
   end
+
+  def page_heading(page_title)
+    return nil if page_title.blank?
+    content_tag(:div, class: 'row') do
+      content_tag(:div, class: 'col-sm-12') do
+        content_tag(:div, class: 'page-header')
+      end
+    end
+  end
+
 end
