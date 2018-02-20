@@ -41,13 +41,15 @@ module ApplicationHelper
     end
   end
 
-  def page_heading(page_title)
+  def page_heading(page_title, sub_title = nil)
     return nil if page_title.blank?
     content_tag(:div, class: 'row') do
       content_tag(:div, class: 'col-sm-12') do
-        content_tag(:div, class: 'page-header')
+        content_tag(:div, class: 'page-header') do
+          content_tag(:h1, page_title) +
+              (sub_title.present? ? content_tag(:p, sub_title, class: 'lead') : '')
+        end
       end
     end
   end
-
 end

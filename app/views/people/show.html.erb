@@ -1,11 +1,4 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="page-header">
-      <h1><%= @person.full_name %></h1>
-      <p class="lead"><%= labels_for_status(@person.status) %></p>
-    </div>
-  </div>
-</div>
+<%= page_heading(@person.full_name, labels_for_status(@person.status)) %>
 
 <div class="row">
   <div class="col-sm-12">
