@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   before_action :set_variables, except: %i[index destroy]
   before_action :set_person, only: %i[show edit update destroy]
+  before_action :add_breadcrumbs
 
   # GET /people
   # GET /people.json
@@ -74,5 +75,12 @@ class PeopleController < ApplicationController
 
   def set_variables
     @organisations = Organisation.order(:name)
+  end
+
+  def add_breadcrumbs
+    @breadcrumbs << { label: 'people', path: people_path }
+    @breadcrumbs << { label: @person.first_name, path: @person } if defined?(@person)
+    @breadcrumbs << { label: 'edit', path: edit_person_path(@person) } if %w[edit update].include?(action_name)
+    @breadcrumbs << { label: 'new', path: new_person_path } if %w[new create].include?(action_name)
   end
 end

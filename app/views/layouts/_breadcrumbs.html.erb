@@ -1,0 +1,7 @@
+<div class="breadcrumb">
+  You are here:
+  <% @breadcrumbs[0..-2].each do |breadcrumb| %>
+    <%= link_to breadcrumb[:label], breadcrumb[:path] %> |
+  <% end %>
+  <%= @breadcrumbs.last[:label] %>
+</div>

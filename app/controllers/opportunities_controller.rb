@@ -3,6 +3,7 @@ class OpportunitiesController < ApplicationController
   before_action :set_opportunity, only: %i[show edit update destroy]
 
   before_action :set_people, only: %i[new edit create update]
+  before_action :add_breadcrumbs
 
   # GET /opportunities
   # GET /opportunities.json
@@ -80,5 +81,12 @@ class OpportunitiesController < ApplicationController
 
   def set_people
     @people = Person.order(:last_name, :first_name)
+  end
+
+  def add_breadcrumbs
+    @breadcrumbs << { label: 'opportunities', path: opportunities_path }
+    @breadcrumbs << { label: @opportunity.job_title, path: @opportunity } if defined?(@opportunity)
+    @breadcrumbs << { label: 'edit', path: edit_opportunity_path(@opportunity) } if %w[edit update].include?(action_name)
+    @breadcrumbs << { label: 'new', path: new_opportunity_path } if %w[new create].include?(action_name)
   end
 end

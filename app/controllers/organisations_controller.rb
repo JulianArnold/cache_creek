@@ -1,5 +1,6 @@
 class OrganisationsController < ApplicationController
   before_action :set_organisation, only: %i[show edit update destroy]
+  before_action :add_breadcrumbs
 
   # GET /organisations
   # GET /organisations.json
@@ -69,5 +70,12 @@ class OrganisationsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def organisation_params
     params.require(:organisation).permit(:name, :postal_address, :phone)
+  end
+
+  def add_breadcrumbs
+    @breadcrumbs << { label: 'organisations', path: organisations_path }
+    @breadcrumbs << { label: @organisation.name, path: @organisation } if defined?(@organisation)
+    @breadcrumbs << { label: 'edit', path: edit_organisation_path(@organisation) } if %w[edit update].include?(action_name)
+    @breadcrumbs << { label: 'new', path: new_organisation_path } if %w[new create].include?(action_name)
   end
 end
