@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'aasm'
 gem 'authlogic'
+gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass'
 gem 'rails', '4.2.10' # 20171201
 gem 'rspec-rails'

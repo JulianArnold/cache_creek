@@ -10,5 +10,4 @@ class ApplicationController < ActionController::Base
   def start_breadcrumbs
     @breadcrumbs = [{ label: 'home', path: root_path }]
   end
-
 end
