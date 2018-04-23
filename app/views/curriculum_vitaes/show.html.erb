@@ -1,0 +1,33 @@
+<%= page_heading(@curriculum_vitae.name) %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <th class="col-sm-3">Name</th>
+        <td class="col-sm-9"><%= @curriculum_vitae.name %></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td>
+          <%= @curriculum_vitae.description %>
+        </td>
+      </tr>
+      <tr>
+        <th>Upload</th>
+        <td>
+          <%= @curriculum_vitae.upload %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br />
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_curriculum_vitae_path(@curriculum_vitae), class: 'btn btn-success' %>
+  <%= link_to 'Back', curriculum_vitaes_path, class: 'btn btn-success' %>
+</div>

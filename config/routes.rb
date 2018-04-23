@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :curriculum_vitaes
   resources :opportunities
   resources :people
   resources :organisations

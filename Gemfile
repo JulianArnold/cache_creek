@@ -5,6 +5,7 @@ gem 'aasm'
 gem 'authlogic'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass'
+gem 'paperclip', '~> 6.0.0'
 gem 'rails', '4.2.10' # 20171201
 gem 'rspec-rails'
 gem 'shoulda-callback-matchers'

@@ -26,3 +26,25 @@
     </div>
   </div>
 </div>
+
+<br />
+
+<div class="row">
+  <div class="col-sm-12">
+    <!-- Nav tabs -->
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="active"><a href="#people" aria-controls="people" role="tab" data-toggle="tab">People</a></li>
+      <li role="presentation"><a href="#opportunities" aria-controls="opportunities" role="tab" data-toggle="tab">Opportunities</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="people">
+        <%= render partial: 'people/people', locals: { people: @organisation.people } %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="opportunities">
+        <%= render partial: 'opportunities/opportunities', locals: { opportunities: @organisation.opportunities } %>
+      </div>
+    </div>
+  </div>
+</div>
