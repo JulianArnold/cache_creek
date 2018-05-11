@@ -15,6 +15,10 @@
 
 class CurriculumVitae < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
-  has_attached_file :upload
-  validates_attachment_content_type :upload, content_type: /\A(application\/pdf)\z/
+  has_attached_file :upload,
+                    path: ':rails_root/tmp/files/:class/:attachment/:id/:filename',
+                    url: ':rails_root/tmp/files/:class/:attachment/:id/:filename'
+                    # url: '/:class/:id/:filename'
+  validates_attachment_content_type :upload, content_type: 'application/pdf'
+  # validates_attachment_content_type :upload, content_type: /\A(application\/pdf)\z/
 end

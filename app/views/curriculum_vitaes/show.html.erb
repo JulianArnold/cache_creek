@@ -17,7 +17,7 @@
       <tr>
         <th>Upload</th>
         <td>
-          <%= @curriculum_vitae.upload %>
+          <%= link_to @curriculum_vitae.upload_file_name, upload_curriculum_vitae_path(@curriculum_vitae.id), target: '_blank' %>
         </td>
       </tr>
       </tbody>

@@ -9,6 +9,8 @@ $ brew install gs
 
 ## Julian's notes
 
+* 20180423: erb templates properly bootstrapped and just added an action mailer
+
 * 20180217: stopped at opportunities/index.html.erb
 
 * 20180125: added mods to git, updated app(s) with the github - paperclip vulnerability warning, navbar already updated

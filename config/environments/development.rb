@@ -41,4 +41,10 @@ Rails.application.configure do
 
   # Tell Paperclip where to find imagemagick
   Paperclip.options[:command_path] = '/usr/local/bin/'
+
+  # Paperclip configuration
+  config.paperclip_defaults = {
+      # storage: :file,
+      path: ':rails_root/tmp/files/:class/:attachment/:id/:filename' # change id_partition to id
+  }
 end

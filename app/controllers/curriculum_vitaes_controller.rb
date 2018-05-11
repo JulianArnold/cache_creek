@@ -1,5 +1,5 @@
 class CurriculumVitaesController < ApplicationController
-  before_action :set_curriculum_vitae, only: [:show, :edit, :update, :destroy]
+  before_action :set_curriculum_vitae, only: [:show, :edit, :update, :destroy, :upload]
   before_action :add_breadcrumbs
 
   # GET /curriculum_vitaes
@@ -59,6 +59,17 @@ class CurriculumVitaesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to curriculum_vitaes_url, notice: 'Curriculum vitae was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /curriculum_vitaes/1/upload
+  def upload
+    if Rails.env.development?
+      send_file "#{Rails.root}/tmp/files/curriculum_vitaes/uploads/#{@curriculum_vitae.id}/#{@curriculum_vitae.upload_file_name}",
+                type: @curriculum_vitae.upload_content_type
+    else
+      # TODO: implement AWS S3
+      render text: 'Please set up your AWS stuff'
     end
   end
 

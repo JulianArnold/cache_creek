@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :curriculum_vitaes
+  resources :curriculum_vitaes do
+    member do
+      get :upload
+    end
+  end
   resources :opportunities
   resources :people
   resources :organisations
