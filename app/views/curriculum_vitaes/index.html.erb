@@ -1,13 +1,13 @@
-<%= page_heading('Curriculum Vitaes') %>
+<%= page_heading(t('views.curriculum_vitaes.index.h1')) %>
 
 <div class="row">
   <div class="col-sm-12">
     <table class="table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Upload</th>
+          <th><%= t('activerecord.attributes.curriculum_vitae.name') %></th>
+          <th><%= t('activerecord.attributes.curriculum_vitae.description') %></th>
+          <th><%= t('activerecord.attributes.curriculum_vitae.upload') %></th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -24,7 +24,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to curriculum_vitae, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= link_to curriculum_vitae, method: :delete, data: { confirm: I18n.t('views.general.are_you_sure') } do %>
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
               <% end %>
             </td>
@@ -32,6 +32,6 @@
         <% end %>
       </tbody>
     </table>
-    <p><%= link_to 'New Curriculum Vitae', new_curriculum_vitae_path, class: 'btn btn-success' %></p>
+    <p><%= link_to t('views.curriculum_vitaes.index.new'), new_curriculum_vitae_path, class: 'btn btn-success' %></p>
   </div>
 </div>

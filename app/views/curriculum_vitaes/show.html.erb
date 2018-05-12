@@ -5,17 +5,17 @@
     <table class="table table-bordered">
       <tbody>
       <tr>
-        <th class="col-sm-3">Name</th>
+        <th class="col-sm-3"><%= t('activerecord.attributes.curriculum_vitae.name') %></th>
         <td class="col-sm-9"><%= @curriculum_vitae.name %></td>
       </tr>
       <tr>
-        <th>Description</th>
+        <th><%= t('activerecord.attributes.curriculum_vitae.description') %></th>
         <td>
           <%= @curriculum_vitae.description %>
         </td>
       </tr>
       <tr>
-        <th>Upload</th>
+        <th><%= t('activerecord.attributes.curriculum_vitae.upload') %></th>
         <td>
           <%= link_to @curriculum_vitae.upload_file_name, upload_curriculum_vitae_path(@curriculum_vitae.id), target: '_blank' %>
         </td>
@@ -28,6 +28,6 @@
 <br />
 
 <div class="btn-group">
-  <%= link_to 'Edit', edit_curriculum_vitae_path(@curriculum_vitae), class: 'btn btn-success' %>
-  <%= link_to 'Back', curriculum_vitaes_path, class: 'btn btn-success' %>
+  <%= link_to t('views.general.edit'), edit_curriculum_vitae_path(@curriculum_vitae), class: 'btn btn-success' %>
+  <%= link_to t('views.general.back'), curriculum_vitaes_path, class: 'btn btn-success' %>
 </div>
