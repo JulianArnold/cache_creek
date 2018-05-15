@@ -1,2 +1,31 @@
 en:
   controllers:
+    curriculum_vitaes:
+      create:
+        success: 'Curriculum vitae was successfully created.'
+      update:
+        success: 'Curriculum vitae was successfully updated.'
+      destroy:
+        success: 'Curriculum vitae was successfully deleted.'
+    opportunities:
+      create:
+        success: 'Opportunity was successfully created.'
+      update:
+        success: 'Opportunity was successfully updated.'
+      destroy:
+        success: 'Opportunity was successfully deleted.'
+    organisations:
+      create:
+        success: 'Organisation was successfully created.'
+      update:
+        success: 'Organisation was successfully updated.'
+      destroy:
+        success: 'Organisation was successfully deleted.'
+    people:
+      create:
+        success: 'Person was successfully created.'
+      update:
+        success: 'Person was successfully updated.'
+      destroy:
+        success: 'Person was successfully deleted.'
+

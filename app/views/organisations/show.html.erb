@@ -5,11 +5,11 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <th class="col-sm-3">Postal Address</th>
+          <th class="col-sm-3"><%= t('activerecord.attributes.organisations.postal_address') %></th>
           <td class="col-sm-9"><%= @organisation.postal_address %></td>
         </tr>
         <tr>
-          <th>Phone</th>
+          <th><%= t('activerecord.attributes.organisations.phone') %></th>
           <td>
             <%= phone_to @organisation.phone %> -
             <%= sms_to @organisation.phone %>
@@ -21,8 +21,8 @@
   <br />
 
     <div class="btn-group">
-      <%= link_to 'Edit', edit_organisation_path(@organisation), class: 'btn btn-success' %>
-      <%= link_to 'Back', organisations_path, class: 'btn btn-success' %>
+      <%= link_to t('views.general.edit'), edit_organisation_path(@organisation), class: 'btn btn-success' %>
+      <%= link_to t('views.general.back'), organisations_path, class: 'btn btn-success' %>
     </div>
   </div>
 </div>

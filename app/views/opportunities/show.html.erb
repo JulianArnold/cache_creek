@@ -5,23 +5,23 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <th class="col-sm-3">Organisation</th>
+          <th class="col-sm-3"><%= t('activerecord.attributes.opportunities.organisation') %></th>
           <td class="col-sm-9"><%= link_to @opportunity.organisation.name, @opportunity.organisation %></td>
         </tr>
         <tr>
-          <th>Person</th>
+          <th><%= t('activerecord.attributes.opportunities.person') %></th>
           <td><%= link_to @opportunity.person.full_name, @opportunity.person %></td>
         </tr>
         <tr>
-          <th>Job Title</th>
+          <th><%= t('activerecord.attributes.opportunities.job_title') %></th>
           <td><%= @opportunity.job_title %></td>
         </tr>
         <tr>
-          <th>Job Description</th>
+          <th><%= t('activerecord.attributes.opportunities.job_description') %> </th>
           <td><%= @opportunity.job_description %></td>
         </tr>
         <tr>
-          <th>Category</th>
+          <th><%= t('activerecord.attributes.opportunities.category') %></th>
           <td><%= @opportunity.category %></td>
         </tr>
       </tbody>
@@ -30,8 +30,8 @@
     <br />
 
     <div class="btn-group">
-      <%= link_to 'Edit', edit_opportunity_path(@opportunity), class: 'btn btn-success' %>
-      <%= link_to 'Back', opportunities_path, class: 'btn btn-success' %>
+      <%= link_to t('views.general.edit'), edit_opportunity_path(@opportunity), class: 'btn btn-success' %>
+      <%= link_to t('views.general.back'), opportunities_path, class: 'btn btn-success' %>
     </div>
   </div>
 </div>

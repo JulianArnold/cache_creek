@@ -27,7 +27,7 @@ class OrganisationsController < ApplicationController
 
     respond_to do |format|
       if @organisation.save
-        format.html { redirect_to @organisation, notice: 'Organisation was successfully created.' }
+        format.html { redirect_to @organisation, notice: I18n.t('controllers.organisations.create.success') }
         format.json { render :show, status: :created, location: @organisation }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class OrganisationsController < ApplicationController
   def update
     respond_to do |format|
       if @organisation.update(organisation_params)
-        format.html { redirect_to @organisation, notice: 'Organisation was successfully updated.' }
+        format.html { redirect_to @organisation, notice: I18n.t('controllers.organisations.update.success') }
         format.json { render :show, status: :ok, location: @organisation }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class OrganisationsController < ApplicationController
   def destroy
     @organisation.destroy
     respond_to do |format|
-      format.html { redirect_to organisations_url, notice: 'Organisation was successfully destroyed.' }
+      format.html { redirect_to organisations_url, notice: I18n.t('controllers.organisations.destroy.success') }
       format.json { head :no_content }
     end
   end
@@ -73,9 +73,9 @@ class OrganisationsController < ApplicationController
   end
 
   def add_breadcrumbs
-    @breadcrumbs << { label: 'organisations', path: organisations_path }
+    @breadcrumbs << { label: I18n.t('activerecord.models.organisations.other'), path: organisations_path }
     @breadcrumbs << { label: @organisation.name, path: @organisation } if defined?(@organisation)
-    @breadcrumbs << { label: 'edit', path: edit_organisation_path(@organisation) } if %w[edit update].include?(action_name)
-    @breadcrumbs << { label: 'new', path: new_organisation_path } if %w[new create].include?(action_name)
+    @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_organisation_path(@organisation) } if %w[edit update].include?(action_name)
+    @breadcrumbs << { label: I18n.t('views.general.new'), path: new_organisation_path } if %w[new create].include?(action_name)
   end
 end

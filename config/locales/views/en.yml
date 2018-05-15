@@ -11,7 +11,7 @@ en:
       validation_error:
         one: An error has prevented your information from being saved
         other: "%{count} errors have prevented your information from being saved"
-
+      you_are_here: "You are here:"
     curriculum_vitaes:
       edit:
         h1: Edit Curriculum Vitae
@@ -20,5 +20,27 @@ en:
         new: New Curriculum Vitae
       new:
         h1: New Curriculum Vitae
-
     opportunities:
+      edit:
+        h1: Edit Opportunity
+      index:
+        h1: Opportunities
+        new: New Opportunity
+      new:
+        h1: New Opportunity
+    organisations:
+      edit:
+        h1: Edit Organisation
+      index:
+        h1: Organisations
+        new: New Organisation
+      new:
+        h1: New Organisation
+    people:
+      edit:
+        h1: Edit Person
+      index:
+        h1: People
+        new: New Person
+      new:
+        h1: New Person

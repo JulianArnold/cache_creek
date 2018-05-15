@@ -1,5 +1,5 @@
 <div class="breadcrumb">
-  You are here:
+  <%= t('views.general.you_are_here') %>
   <% @breadcrumbs[0..-2].each do |breadcrumb| %>
     <%= link_to breadcrumb[:label], breadcrumb[:path] %> |
   <% end %>

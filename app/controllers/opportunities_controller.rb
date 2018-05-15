@@ -30,7 +30,7 @@ class OpportunitiesController < ApplicationController
 
     respond_to do |format|
       if @opportunity.save
-        format.html { redirect_to @opportunity, notice: 'Opportunity was successfully created.' }
+        format.html { redirect_to @opportunity, notice: I18n.t('controllers.opportunities.create.success') }
         format.json { render :show, status: :created, location: @opportunity }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class OpportunitiesController < ApplicationController
   def update
     respond_to do |format|
       if @opportunity.update(opportunity_params)
-        format.html { redirect_to @opportunity, notice: 'Opportunity was successfully updated.' }
+        format.html { redirect_to @opportunity, notice: I18n.t('controllers.opportunities.update.success') }
         format.json { render :show, status: :ok, location: @opportunity }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class OpportunitiesController < ApplicationController
   def destroy
     @opportunity.destroy
     respond_to do |format|
-      format.html { redirect_to opportunities_url, notice: 'Opportunity was successfully deleted.' }
+      format.html { redirect_to opportunities_url, notice: I18n.t('controllers.opportunities.destroy.success') }
       format.json { head :no_content }
     end
   end
@@ -84,9 +84,9 @@ class OpportunitiesController < ApplicationController
   end
 
   def add_breadcrumbs
-    @breadcrumbs << { label: 'opportunities', path: opportunities_path }
+    @breadcrumbs << { label: I18n.t('activerecord.models.opportunities.other'), path: opportunities_path }
     @breadcrumbs << { label: @opportunity.job_title, path: @opportunity } if defined?(@opportunity)
-    @breadcrumbs << { label: 'edit', path: edit_opportunity_path(@opportunity) } if %w[edit update].include?(action_name)
-    @breadcrumbs << { label: 'new', path: new_opportunity_path } if %w[new create].include?(action_name)
+    @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_opportunity_path(@opportunity) } if %w[edit update].include?(action_name)
+    @breadcrumbs << { label: I18n.t('views.general.new'), path: new_opportunity_path } if %w[new create].include?(action_name)
   end
 end

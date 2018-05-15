@@ -5,38 +5,38 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <th class="col-sm-3">Email</th>
+          <th class="col-sm-3"><%= t('activerecord.attributes.people.email') %></th>
           <td class="col-sm-9"><%= mail_to @person.email %></td>
         </tr>
         <tr>
-          <th>Phone</th>
+          <th><%= t('activerecord.attributes.people.phone') %></th>
           <td>
             <%= phone_to @person.phone %> -
             <%= sms_to @person.phone %>
           </td>
         </tr>
         <tr>
-          <th>Organisation</th>
+          <th><%= t('activerecord.attributes.people.organisation') %></th>
           <td><%= link_to @person.organisation.name, @person.organisation %></td>
         </tr>
         <tr>
-          <th>LinkedIn Profile</th>
+          <th><%= t('activerecord.attributes.people.linkedin_profile_url') %></th>
           <td><%= linkedin_to @person.linkedin_profile_url %></td>
         </tr>
         <tr>
-          <th>Next Contact On</th>
+          <th><%= t('activerecord.attributes.people.next_contact_on') %></th>
           <td><%= @person.next_contact_on&.strftime('%-d %b %Y') %></td>
         </tr>
         <tr>
-          <th>Source Of Contact</th>
+          <th><%= t('activerecord.attributes.people.source_of_contact') %></th>
           <td><%= @person.source_of_contact %></td>
         </tr>
         <tr>
-          <th>CV Sent On</th>
+          <th><%= t('activerecord.attributes.people.cv_sent_on') %></th>
           <td><%= @person.cv_sent_on&.strftime('%-d %b %Y') %></td>
         </tr>
         <tr>
-          <th>CV Version</th>
+          <th><%= t('activerecord.attributes.people.cv_version') %></th>
           <td><%= @person.cv_version %></td>
         </tr>
       </tbody>
@@ -45,8 +45,8 @@
     <br />
 
     <div class="btn-group">
-      <%= link_to 'Edit', edit_person_path(@person), class: 'btn btn-success' %>
-      <%= link_to 'Back', people_path, class: 'btn btn-success' %>
+      <%= link_to t('views.general.edit'), edit_person_path(@person), class: 'btn btn-success' %>
+      <%= link_to t('views.general.back'), people_path, class: 'btn btn-success' %>
     </div>
   </div>
 </div>

@@ -12,6 +12,8 @@
 
 class Organisation < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
+  validates :phone, format: /\A[\d(\+][\d\()\-\ ]{6,20}\z/,
+            allow_blank: true
   has_many :people
   has_many :opportunities
 end

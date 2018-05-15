@@ -3,12 +3,12 @@
     <table class="table">
       <thead>
       <tr>
-        <th>Organisation</th>
-        <th>Person</th>
-        <th>Job title</th>
-        <th>Job description</th>
-        <th>Category</th>
-        <th>Updated</th>
+        <th><%= t('activerecord.attributes.opportunities.organisation') %></th>
+        <th><%= t('activerecord.attributes.opportunities.person') %></th>
+        <th><%= t('activerecord.attributes.opportunities.job_title') %></th>
+        <th><%= t('activerecord.attributes.opportunities.job_description') %></th>
+        <th><%= t('activerecord.attributes.opportunities.category') %></th>
+        <th><%= t('activerecord.attributes.opportunities.updated') %></th>
         <th colspan="2"></th>
       </tr>
       </thead>
@@ -28,7 +28,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to opportunity, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= link_to opportunity, method: :delete, data: { confirm: I18n.t('views.general.are_you_sure') } do %>
                   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
               <% end %>
             </td>

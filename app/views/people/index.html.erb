@@ -1,7 +1,7 @@
-<%= page_heading('People') %>
+<%= page_heading(t('views.people.index.h1')) %>
 <%= render partial: 'people/people', locals: { people: @people } %>
 <div class="row">
   <div class="col-sm-12">
-    <p><%= link_to 'New Person', new_person_path, class: 'btn btn-success' %></p>
+    <p><%= link_to t('views.people.index.new'), new_person_path, class: 'btn btn-success' %></p>
   </div>
 </div>

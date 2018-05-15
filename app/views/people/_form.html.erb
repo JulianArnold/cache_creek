@@ -1,7 +1,7 @@
 <%= form_for(@person, html: { class: 'form-horizontal' }) do |f| %>
   <% if @person.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+      <h2><%= t('views.general.validation_error', { count: @curriculum_vitae.errors.count }) %></h2>
 
       <ul>
       <% @person.errors.full_messages.each do |message| %>
@@ -12,76 +12,76 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :first_name, class: 'col-sm-2 control-label' %>
+    <%= f.label :first_name, t('activerecord.attributes.people.first_name'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :first_name, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :last_name, class: 'col-sm-2 control-label' %>
+    <%= f.label :last_name, t('activerecord.attributes.people.last_name'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :last_name, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :email, class: 'col-sm-2 control-label' %>
+    <%= f.label :email, t('activerecord.attributes.people.email'),class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :email, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :phone, class: 'col-sm-2 control-label' %>
+    <%= f.label :phone, t('activerecord.attributes.people.phone'),class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :phone, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :organisation_id, class: 'col-sm-2 control-label' %>
+    <%= f.label :organisation, t('activerecord.attributes.people.organisation'),class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.collection_select :organisation_id, @organisations, :id, :name, {}, { class: 'form-control' } %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :linkedin_profile_url, class: 'col-sm-2 control-label' %>
+    <%= f.label :linkedin_profile_url, t('activerecord.attributes.people.linkedin_profile_url'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :linkedin_profile_url, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :next_contact_on, class: 'col-sm-2 control-label' %>
+    <%= f.label :next_contact_on, t('activerecord.attributes.people.next_contact_on'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :next_contact_on, class: 'form-control datepicker' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :source_of_contact, class: 'col-sm-2 control-label' %>
+    <%= f.label :source_of_contact, t('activerecord.attributes.people.source_of_contact'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :source_of_contact, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :cv_sent_on, class: 'col-sm-2 control-label' %>
+    <%= f.label :cv_sent_on, t('activerecord.attributes.people.cv_sent_on'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :cv_sent_on, class: 'form-control datepicker' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :cv_version, class: 'col-sm-2 control-label' %>
+    <%= f.label :cv_version, t('activerecord.attributes.people.cv_version'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :cv_version, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :status, class: 'col-sm-2 control-label' %>
+    <%= f.label :status, t('activerecord.attributes.people.status'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.select :status, Person::STATUSES, {}, { class: 'form-control' } %>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-10 col-sm-offset-2">
-      <%= f.submit 'Save', class: 'btn btn-success' %>
+      <%= f.submit t('views.general.save'), class: 'btn btn-success' %>
       or
-      <%= link_to 'cancel', people_path %>
+      <%= link_to t('views.general.cancel'), people_path %>
     </div>
   </div>
 <% end %>

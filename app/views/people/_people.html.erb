@@ -4,21 +4,21 @@
       <thead>
       <tr>
         <th>
-          Name
+          <%= t('activerecord.attributes.people.name') %>
           <br />
-          Organisation
+          <%= t('activerecord.attributes.people.organisation') %>
         </th>
         <th>
-          Email
+          <%= t('activerecord.attributes.people.email') %>
           <br />
-          Phone
+          <%= t('activerecord.attributes.people.phone') %>
         </th>
-        <th>LinkedIn</th>
-        <th>Next contact</th>
-        <th>Source</th>
-        <th>CV sent</th>
-        <th>CV version</th>
-        <th>Status</th>
+        <th><%= t('activerecord.attributes.people.linkedin_profile_url') %></th>
+        <th><%= t('activerecord.attributes.people.next_contact_on') %></th>
+        <th><%= t('activerecord.attributes.people.source_of_contact') %></th>
+        <th><%= t('activerecord.attributes.people.cv_sent_on') %></th>
+        <th><%= t('activerecord.attributes.people.cv_version') %></th>
+        <th><%= t('activerecord.attributes.people.status') %></th>
         <th colspan="2"></th>
       </tr>
       </thead>
@@ -50,7 +50,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to person, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= link_to person, method: :delete, data: { confirm: I18n.t('views.general.are_you_sure') } do %>
                   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
               <% end %>
             </td>

@@ -1,7 +1,7 @@
 <%= form_for(@organisation, html: { class: 'form-horizontal' } ) do |f| %>
   <% if @organisation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@organisation.errors.count, "error") %> prohibited this organisation from being saved:</h2>
+      <h2><%= t('views.general.validation_error', { count: @organisation.errors.count }) %></h2>
 
       <ul>
       <% @organisation.errors.full_messages.each do |message| %>
@@ -12,28 +12,28 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, class: 'col-sm-2 control-label' %>
+    <%= f.label :name, t('activerecord.attributes.organisations.name'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :name, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :postal_address, class: 'col-sm-2 control-label' %>
+    <%= f.label :postal_address, t('activerecord.attributes.organisations.postal_address'),class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_area :postal_address, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :phone, class: 'col-sm-2 control-label' %>
+    <%= f.label :phone, t('activerecord.attributes.organisations.phone'), class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :phone, class: 'form-control' %>
+      <%= f.phone_field :phone, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-10 col-sm-offset-2">
-      <%= f.submit 'Save', class: 'btn btn-success'%>
-      or
-      <%= link_to 'cancel', organisations_path %>
+      <%= f.submit t('views.general.save'), class: 'btn btn-success'%>
+      <%= t('views.general.or') %>
+      <%= link_to t('views.general.cancel'), organisations_path %>
     </div>
   </div>
 <% end %>

@@ -28,7 +28,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        format.html { redirect_to @person, notice: I18n.t('controllers.people.create.success') }
         format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PeopleController < ApplicationController
   def update
     respond_to do |format|
       if @person.update(person_params)
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+        format.html { redirect_to @person, notice: I18n.t('controllers.people.update.success') }
         format.json { render :show, status: :ok, location: @person }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class PeopleController < ApplicationController
   def destroy
     @person.destroy
     respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Person was successfully deleted.' }
+      format.html { redirect_to people_url, notice: I18n.t('controllers.people.destroy.success') }
       format.json { head :no_content }
     end
   end
@@ -78,9 +78,9 @@ class PeopleController < ApplicationController
   end
 
   def add_breadcrumbs
-    @breadcrumbs << { label: 'people', path: people_path }
+    @breadcrumbs << { label: I18n.t('activerecord.models.people.other'), path: people_path }
     @breadcrumbs << { label: @person.first_name, path: @person } if defined?(@person)
-    @breadcrumbs << { label: 'edit', path: edit_person_path(@person) } if %w[edit update].include?(action_name)
-    @breadcrumbs << { label: 'new', path: new_person_path } if %w[new create].include?(action_name)
+    @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_person_path(@person) } if %w[edit update].include?(action_name)
+    @breadcrumbs << { label: I18n.t('views.general.new'), path: new_person_path } if %w[new create].include?(action_name)
   end
 end
