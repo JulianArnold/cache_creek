@@ -11,14 +11,14 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="<%= controller_name == 'opportunities' ? 'active' : '' %>"><%= link_to 'Opportunities', opportunities_path %></li>
-        <li class="<%= controller_name == 'organisations' ? 'active' : '' %>"><%= link_to 'Organisations', organisations_path %></li>
-        <li class="<%= controller_name == 'people' ? 'active' : '' %>"><%= link_to 'People', people_path %></li>
-        <li class="<%= controller_name == 'curriculum_vitaes' ? 'active' : '' %>"><%= link_to 'CVs', curriculum_vitaes_path %></li>
+        <li class="<%= controller_name == 'opportunities' ? 'active' : '' %>"><%= link_to t('activerecord.models.opportunities.other'), opportunities_path %></li>
+        <li class="<%= controller_name == 'organisations' ? 'active' : '' %>"><%= link_to t('activerecord.models.organisations.other'), organisations_path %></li>
+        <li class="<%= controller_name == 'people' ? 'active' : '' %>"><%= link_to t('activerecord.models.people.other'), people_path %></li>
+        <li class="<%= controller_name == 'curriculum_vitaes' ? 'active' : '' %>"><%= link_to t('activerecord.models.curriculum_vitae.abbreviation'), curriculum_vitaes_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../navbar/"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 0 items </a></li>
-        <button type="button" class="btn btn-default navbar-btn btn-success">Save!</button>
+        <button type="button" class="btn btn-default navbar-btn btn-success"><%= t('views.general.save') %></button>
       </ul>
     </div><!--/.navbar-collapse -->
   </div>
