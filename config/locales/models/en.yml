@@ -64,3 +64,4 @@ en:
         cv_sent_on: CV sent
         cv_version: CV version
         status: Status
+      send_sms: send SMS

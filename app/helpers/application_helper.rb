@@ -24,7 +24,7 @@ module ApplicationHelper
   def sms_to(phone_number)
     # return nil unless phone_number.present?
     return nil if phone_number.blank?
-    link_to 'send SMS', 'sms:' + phone_number, class: 'text-muted'
+    link_to t('activerecord.attributes.send_sms'), 'sms:' + phone_number, class: 'text-muted'
   end
 
   def skype_to(skype_id)
