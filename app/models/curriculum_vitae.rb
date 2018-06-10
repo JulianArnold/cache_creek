@@ -11,9 +11,13 @@
 #  upload_updated_at   :datetime
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  user_id             :integer
 #
 
 class CurriculumVitae < ActiveRecord::Base
+
+  belongs_to :user
+
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   has_attached_file :upload,

@@ -16,6 +16,7 @@
 #  status               :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  user_id              :integer
 #
 
 class Person < ActiveRecord::Base
@@ -24,6 +25,8 @@ class Person < ActiveRecord::Base
 
   belongs_to :organisation
   has_many :opportunities
+  belongs_to :user
+
   validates :first_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :organisation_id, presence: true

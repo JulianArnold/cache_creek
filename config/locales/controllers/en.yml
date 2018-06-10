@@ -28,4 +28,11 @@ en:
         success: 'Person was successfully updated.'
       destroy:
         success: 'Person was successfully deleted.'
-
+    users:
+      create:
+        success: 'User was successfully created.'
+      update:
+        success: 'User was successfully updated.'
+      destroy:
+        success: 'User was successfully deleted.'
+        error: 'User was not deleted.'

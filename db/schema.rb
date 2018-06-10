@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418205546) do
+ActiveRecord::Schema.define(version: 20180528214524) do
 
   create_table "curriculum_vitaes", force: :cascade do |t|
     t.string   "name"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20180418205546) do
     t.datetime "upload_updated_at"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "user_id"
   end
+
+  add_index "curriculum_vitaes", ["user_id"], name: "index_curriculum_vitaes_on_user_id"
 
   create_table "opportunities", force: :cascade do |t|
     t.integer  "organisation_id"
@@ -32,7 +35,10 @@ ActiveRecord::Schema.define(version: 20180418205546) do
     t.string   "category"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
   end
+
+  add_index "opportunities", ["user_id"], name: "index_opportunities_on_user_id"
 
   create_table "organisations", force: :cascade do |t|
     t.string   "name"
@@ -40,7 +46,10 @@ ActiveRecord::Schema.define(version: 20180418205546) do
     t.string   "phone"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "user_id"
   end
+
+  add_index "organisations", ["user_id"], name: "index_organisations_on_user_id"
 
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
@@ -56,6 +65,41 @@ ActiveRecord::Schema.define(version: 20180418205546) do
     t.string   "status"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "user_id"
   end
+
+  add_index "people", ["user_id"], name: "index_people_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "locale",                       default: "en"
+    t.string   "country_code"
+    t.string   "mobile_number"
+    t.datetime "email_permission_granted_at"
+    t.datetime "sms_permission_granted_at"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.string   "single_access_token"
+    t.string   "perishable_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_token_sent_at"
+    t.integer  "login_count",                  default: 0,     null: false
+    t.integer  "failed_login_count",           default: 0,     null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.boolean  "active",                       default: false
+    t.boolean  "approved",                     default: false
+    t.boolean  "confirmed",                    default: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email"
 
 end

@@ -44,3 +44,11 @@ en:
         new: New Person
       new:
         h1: New Person
+    users:
+      edit:
+        h1: Edit User
+      index:
+        h1: Users
+        new: New User
+      new:
+        h1: New User

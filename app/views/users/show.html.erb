@@ -1,0 +1,29 @@
+<%= page_heading(@user.full_name) %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.users.full_name') %></th>
+          <td class="col-sm-9"><%= @user.full_name %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.users.email') %></th>
+          <td><%= mail_to @user.email %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.users.mobile_number') %></th>
+          <td><%= phone_to @user.mobile_number %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+
+    <div class="btn-group">
+      <!--<%= link_to t('views.general.edit'), edit_user_path(@user), class: 'btn btn-success' %>-->
+      <%= link_to t('views.general.back'), users_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>

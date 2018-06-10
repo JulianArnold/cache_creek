@@ -10,11 +10,15 @@
 #  category        :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
 #
 
 class Opportunity < ActiveRecord::Base
+
   belongs_to :organisation
   belongs_to :person
+  belongs_to :user
+
   validates :organisation_id, presence: true
   validates :person_id, presence: true
   validates :job_title, presence: true

@@ -10,6 +10,7 @@ gem 'paperclip', '~> 6.0.0'
 gem 'rails', '4.2.10' # 20171201
 gem 'rails-html-sanitizer', '> 1.0.3'
 gem 'rspec-rails'
+gem 'scrypt'
 gem 'shoulda-callback-matchers'
 gem 'shoulda-matchers'
 gem 'slim'
@@ -58,7 +59,7 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
 end
 
 group :staging, :production do
