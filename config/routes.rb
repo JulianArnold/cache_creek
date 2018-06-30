@@ -9,6 +9,14 @@ Rails.application.routes.draw do
   resources :organisations
   resources :people
   resources :users, except: [:new, :create]
+  resources :user_sessions, only: [:new, :create, :destroy]
+  resources :user_sign_ups, only: [:new, :create] do
+    collection do
+      get 'confirm/:code', action: :confirm, as: :confirm
+    end
+  end
+  get '/my_account', to: 'users#show', as: :my_account
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

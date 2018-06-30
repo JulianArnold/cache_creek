@@ -1,14 +1,12 @@
 class OpportunitiesController < ApplicationController
-  before_action :set_variables, except: %i[index destroy]
   before_action :set_opportunity, only: %i[show edit update destroy]
-
-  before_action :set_people, only: %i[new edit create update]
+  before_action :set_variables, except: %i[index destroy]
   before_action :add_breadcrumbs
 
   # GET /opportunities
   # GET /opportunities.json
   def index
-    @opportunities = Opportunity.order(updated_at: :desc).all
+    @opportunities = current_user_opportunities.order(updated_at: :desc).all
   end
 
   # GET /opportunities/1
@@ -17,7 +15,7 @@ class OpportunitiesController < ApplicationController
 
   # GET /opportunities/new
   def new
-    @opportunity = Opportunity.new
+    @opportunity = current_user_opportunities.new
   end
 
   # GET /opportunities/1/edit
@@ -26,7 +24,7 @@ class OpportunitiesController < ApplicationController
   # POST /opportunities
   # POST /opportunities.json
   def create
-    @opportunity = Opportunity.new(opportunity_params)
+    @opportunity = current_user_opportunities.new(opportunity_params)
 
     respond_to do |format|
       if @opportunity.save
@@ -66,8 +64,12 @@ class OpportunitiesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  def current_user_opportunities
+    current_user.opportunities
+  end
+
   def set_opportunity
-    @opportunity = Opportunity.find(params[:id])
+    @opportunity = current_user_opportunities.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -76,11 +78,8 @@ class OpportunitiesController < ApplicationController
   end
 
   def set_variables
-    @organisations = Organisation.order(:name)
-  end
-
-  def set_people
-    @people = Person.order(:last_name, :first_name)
+    @organisations = current_user.organisations.order(:name)
+    @people = current_user.people.order(:last_name, :first_name)
   end
 
   def add_breadcrumbs

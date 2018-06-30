@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :admin_access_required, except: %i[show edit update]
   before_action :get_user, except: :index
   before_action :add_breadcrumbs
 
@@ -37,7 +38,11 @@ class UsersController < ApplicationController
   protected
 
   def get_user
-    @user = User.find(params[:id])
+    @user = if current_user&.admin? && params[:id].present?
+              User.find(params[:id])
+            else
+              current_user
+            end
   end
 
   def user_params

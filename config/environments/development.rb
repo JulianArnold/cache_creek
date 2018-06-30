@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -46,5 +46,21 @@ Rails.application.configure do
   config.paperclip_defaults = {
       # storage: :file,
       path: ':rails_root/tmp/files/:class/:attachment/:id/:filename' # change id_partition to id
+  }
+
+  # Gmail sending configuration
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      # domain:               'example.com',
+      user_name:            ENV['GMAIL_EMAIL_ADDRESS'],
+      password:             ENV['GMAIL_PASSWORD'],
+      authentication:       'plain',
+      enable_starttls_auto: true,
+      raise_delivery_errors: true
   }
 end

@@ -1,0 +1,37 @@
+<%= page_heading(t('views.user_sessions.new.h1')) %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= form_for(@user_session, html: { class: 'form-horizontal', autocomplete: 'off' } ) do |f| %>
+      <% if @user_session.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= t('views.general.validation_error', { count: @user_session.errors.count }) %></h2>
+
+          <ul>
+            <% @user_session.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :email, t('activerecord.attributes.user_sessions.email'), class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: 'new-email' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, t('activerecord.attributes.user_sessions.password'), class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.password_field :password, class: 'form-control', autocomplete: 'new-password' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+          <%= f.submit t('views.general.sign_in'), class: 'btn btn-success'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528214524) do
+ActiveRecord::Schema.define(version: 20180625204415) do
 
   create_table "curriculum_vitaes", force: :cascade do |t|
     t.string   "name"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20180528214524) do
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "locale",                       default: "en"
+    t.string   "locale",                          default: "en"
     t.string   "country_code"
     t.string   "mobile_number"
     t.datetime "email_permission_granted_at"
@@ -86,20 +86,23 @@ ActiveRecord::Schema.define(version: 20180528214524) do
     t.string   "perishable_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_token_sent_at"
-    t.integer  "login_count",                  default: 0,     null: false
-    t.integer  "failed_login_count",           default: 0,     null: false
+    t.integer  "login_count",                     default: 0,     null: false
+    t.integer  "failed_login_count",              default: 0,     null: false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.boolean  "active",                       default: false
-    t.boolean  "approved",                     default: false
-    t.boolean  "confirmed",                    default: false
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.boolean  "active",                          default: false
+    t.boolean  "approved",                        default: false
+    t.boolean  "confirmed",                       default: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "account_activation_code"
+    t.datetime "account_activation_code_sent_at"
   end
 
+  add_index "users", ["account_activation_code"], name: "index_users_on_account_activation_code"
   add_index "users", ["email"], name: "index_users_on_email"
 
 end

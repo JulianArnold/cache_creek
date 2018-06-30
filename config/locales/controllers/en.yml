@@ -28,6 +28,12 @@ en:
         success: 'Person was successfully updated.'
       destroy:
         success: 'Person was successfully deleted.'
+    user_sign_ups:
+      create:
+        success: 'Thank you for signing up. Please check your email to activate your account.'
+      confirm:
+        success: 'Your account has been activated. Please sign in.'
+        error: 'Sorry, your account activation failed. Please contact support.'
     users:
       create:
         success: 'User was successfully created.'

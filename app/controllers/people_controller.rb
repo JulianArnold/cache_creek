@@ -1,12 +1,12 @@
 class PeopleController < ApplicationController
-  before_action :set_variables, except: %i[index destroy]
   before_action :set_person, only: %i[show edit update destroy]
+  before_action :set_variables, except: %i[index destroy]
   before_action :add_breadcrumbs
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.order(next_contact_on: :desc).all
+    @people = current_user_people.order(next_contact_on: :desc).all
   end
 
   # GET /people/1
@@ -15,7 +15,7 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
-    @person = Person.new(status: Person::STATUSES.first)
+    @person = current_user_people.new(status: Person::STATUSES.first)
   end
 
   # GET /people/1/edit
@@ -24,7 +24,7 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    @person = Person.new(person_params)
+    @person = current_user_people.new(person_params)
 
     respond_to do |format|
       if @person.save
@@ -64,8 +64,12 @@ class PeopleController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  def current_user_people
+    current_user.people
+  end
+
   def set_person
-    @person = Person.find(params[:id])
+    @person = current_user_people.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -74,7 +78,7 @@ class PeopleController < ApplicationController
   end
 
   def set_variables
-    @organisations = Organisation.order(:name)
+    @organisations = current_user.organisations.order(:name)
   end
 
   def add_breadcrumbs

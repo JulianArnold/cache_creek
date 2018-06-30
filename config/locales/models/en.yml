@@ -76,3 +76,6 @@ en:
         password: Password
         password_confirmation: Confirm Password
         mobile_number: Mobile Number
+      user_sessions:
+        email: Email
+        password: Password

@@ -1,11 +1,12 @@
 class CurriculumVitaesController < ApplicationController
   before_action :set_curriculum_vitae, only: [:show, :edit, :update, :destroy, :upload]
+  before_action :set_variables, except: %i[index destroy]
   before_action :add_breadcrumbs
 
   # GET /curriculum_vitaes
   # GET /curriculum_vitaes.json
   def index
-    @curriculum_vitaes = CurriculumVitae.all
+    @curriculum_vitaes = current_user_curriculum_vitaes.all
   end
 
   # GET /curriculum_vitaes/1
@@ -15,7 +16,7 @@ class CurriculumVitaesController < ApplicationController
 
   # GET /curriculum_vitaes/new
   def new
-    @curriculum_vitae = CurriculumVitae.new
+    @curriculum_vitae = current_user_curriculum_vitaes.new
   end
 
   # GET /curriculum_vitaes/1/edit
@@ -25,7 +26,7 @@ class CurriculumVitaesController < ApplicationController
   # POST /curriculum_vitaes
   # POST /curriculum_vitaes.json
   def create
-    @curriculum_vitae = CurriculumVitae.new(curriculum_vitae_params)
+    @curriculum_vitae = current_user_curriculum_vitaes.new(curriculum_vitae_params)
 
     respond_to do |format|
       if @curriculum_vitae.save
@@ -76,19 +77,25 @@ class CurriculumVitaesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_curriculum_vitae
-    @curriculum_vitae = CurriculumVitae.find(params[:id])
+  def current_user_curriculum_vitaes
+    current_user.curriculum_vitaes
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def curriculum_vitae_params
-    params.require(:curriculum_vitae).permit(:name, :description, :upload)
+  def set_curriculum_vitae
+    @curriculum_vitae = current_user_curriculum_vitaes.find(params[:id])
   end
+
+  def set_variables; end
 
   def add_breadcrumbs
     @breadcrumbs << { label: I18n.t('activerecord.models.curriculum_vitae.other'), path: curriculum_vitaes_path }
     @breadcrumbs << { label: @curriculum_vitae.name, path: @curriculum_vitae } if defined?(@curriculum_vitae)
     @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_curriculum_vitae_path(@curriculum_vitae) } if %w[edit update].include?(action_name)
     @breadcrumbs << { label: I18n.t('views.general.new'), path: new_curriculum_vitae_path } if %w[new create].include?(action_name)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def curriculum_vitae_params
+    params.require(:curriculum_vitae).permit(:name, :description, :upload)
   end
 end

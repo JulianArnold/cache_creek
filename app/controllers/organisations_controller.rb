@@ -1,11 +1,12 @@
 class OrganisationsController < ApplicationController
   before_action :set_organisation, only: %i[show edit update destroy]
+  before_action :set_variables, except: %i[index destroy]
   before_action :add_breadcrumbs
 
   # GET /organisations
   # GET /organisations.json
   def index
-    @organisations = Organisation.order(name: :asc).all
+    @organisations = current_user_organisations.order(name: :asc).all
   end
 
   # GET /organisations/1
@@ -14,7 +15,7 @@ class OrganisationsController < ApplicationController
 
   # GET /organisations/new
   def new
-    @organisation = Organisation.new
+    @organisation = current_user_organisations.new
   end
 
   # GET /organisations/1/edit
@@ -23,7 +24,7 @@ class OrganisationsController < ApplicationController
   # POST /organisations
   # POST /organisations.json
   def create
-    @organisation = Organisation.new(organisation_params)
+    @organisation = current_user_organisations.build(organisation_params)
 
     respond_to do |format|
       if @organisation.save
@@ -63,9 +64,15 @@ class OrganisationsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_organisation
-    @organisation = Organisation.find(params[:id])
+  def current_user_organisations
+    current_user.organisations
   end
+
+  def set_organisation
+    @organisation = current_user_organisations.find(params[:id])
+  end
+
+  def set_variables; end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def organisation_params

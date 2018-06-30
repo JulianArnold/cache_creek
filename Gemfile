@@ -5,6 +5,7 @@ gem 'aasm'
 gem 'authlogic', '= 3.8.0'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass'
+gem 'dotenv-rails'
 gem 'loofah', '> 2.2.1'
 gem 'paperclip', '~> 6.0.0'
 gem 'rails', '4.2.10' # 20171201

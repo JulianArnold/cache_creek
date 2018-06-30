@@ -8,6 +8,7 @@ en:
       new: New
       or: or
       save: Save
+      sign_in: Sign in
       validation_error:
         one: An error has prevented your information from being saved
         other: "%{count} errors have prevented your information from being saved"
@@ -52,3 +53,11 @@ en:
         new: New User
       new:
         h1: New User
+    user_sessions:
+      new:
+        h1: Please sign in
+    user_sign_ups:
+      new:
+        h1: Please sign up
+        submit: Sign up now
+        cancel: If you have already signed up, sign in now
