@@ -4,15 +4,7 @@
   <div class="col-sm-12">
     <%= form_for(@user_session, html: { class: 'form-horizontal', autocomplete: 'off' } ) do |f| %>
       <% if @user_session.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= t('views.general.validation_error', { count: @user_session.errors.count }) %></h2>
-
-          <ul>
-            <% @user_session.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+        <%= render partial: 'layouts/form_errors', locals: { thing: @user_session } %>
       <% end %>
 
       <div class="form-group">

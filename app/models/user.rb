@@ -32,9 +32,12 @@
 #  updated_at                      :datetime         not null
 #  account_activation_code         :string
 #  account_activation_code_sent_at :datetime
+#  admin_access                    :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
+  attr_accessor :current_password
+
   acts_as_authentic do |c|
     c.login_field = :email
     c.validates_uniqueness_of_email_field_options = { case_sensitive: false }
@@ -60,8 +63,20 @@ class User < ActiveRecord::Base
   before_destroy :check_deletable
 
   # instance methods
-  def admin?
-    true # FIXME: add user permissions
+
+  # sample of what to expect in params
+  # params = { current_password: 'abc123', password: 'def456', password_confirmation: 'def456' }
+  def change_password(params)
+    return false if params[:current_password].blank?
+    return false if params[:password].blank?
+    return false if params[:password_confirmation].blank?
+    unless self.valid_password?(params[:current_password])
+      errors.add(:current_password, 'is invalid')
+      return false
+    end
+    self.password = params[:password]
+    self.password_confirmation = params[:password_confirmation]
+    self.save
   end
 
   def full_name

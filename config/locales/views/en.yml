@@ -37,6 +37,10 @@ en:
         new: New Organisation
       new:
         h1: New Organisation
+    password_change:
+      new:
+        h1: Change your password
+        save: Change now
     people:
       edit:
         h1: Edit Person
@@ -53,6 +57,8 @@ en:
         new: New User
       new:
         h1: New User
+      show:
+        h1: My Profile
     user_sessions:
       new:
         h1: Please sign in

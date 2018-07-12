@@ -6,7 +6,7 @@ class CurriculumVitaesController < ApplicationController
   # GET /curriculum_vitaes
   # GET /curriculum_vitaes.json
   def index
-    @curriculum_vitaes = current_user_curriculum_vitaes.all
+    @curriculum_vitaes = findable_curriculum_vitaes.all
   end
 
   # GET /curriculum_vitaes/1
@@ -16,7 +16,7 @@ class CurriculumVitaesController < ApplicationController
 
   # GET /curriculum_vitaes/new
   def new
-    @curriculum_vitae = current_user_curriculum_vitaes.new
+    @curriculum_vitae = findable_curriculum_vitaes.new
   end
 
   # GET /curriculum_vitaes/1/edit
@@ -26,7 +26,7 @@ class CurriculumVitaesController < ApplicationController
   # POST /curriculum_vitaes
   # POST /curriculum_vitaes.json
   def create
-    @curriculum_vitae = current_user_curriculum_vitaes.new(curriculum_vitae_params)
+    @curriculum_vitae = findable_curriculum_vitaes.new(curriculum_vitae_params)
 
     respond_to do |format|
       if @curriculum_vitae.save
@@ -76,13 +76,17 @@ class CurriculumVitaesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def current_user_curriculum_vitaes
-    current_user.curriculum_vitaes
+  # Returns an Active Record relation (a collection) of CVs, based on the user's permission.
+  def findable_curriculum_vitaes
+    if current_user.admin_access
+      CurriculumVitae
+    else
+      current_user.curriculum_vitaes
+    end
   end
 
   def set_curriculum_vitae
-    @curriculum_vitae = current_user_curriculum_vitaes.find(params[:id])
+    @curriculum_vitae = findable_curriculum_vitaes.find(params[:id])
   end
 
   def set_variables; end

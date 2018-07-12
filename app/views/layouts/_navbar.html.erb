@@ -10,20 +10,32 @@
       <a class="navbar-brand" href="#">Cache Creek</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="<%= controller_name == 'opportunities' ? 'active' : '' %>"><%= link_to t('activerecord.models.opportunities.other'), opportunities_path %></li>
-        <li class="<%= controller_name == 'organisations' ? 'active' : '' %>"><%= link_to t('activerecord.models.organisations.other'), organisations_path %></li>
-        <li class="<%= controller_name == 'people' ? 'active' : '' %>"><%= link_to t('activerecord.models.people.other'), people_path %></li>
-        <li class="<%= controller_name == 'curriculum_vitaes' ? 'active' : '' %>"><%= link_to t('activerecord.models.curriculum_vitae.abbreviation'), curriculum_vitaes_path %></li>
-      </ul>
+      <% if current_user %>
+        <ul class="nav navbar-nav">
+          <li class="<%= controller_name == 'opportunities' ? 'active' : '' %>"><%= link_to t('activerecord.models.opportunities.other'), opportunities_path %></li>
+          <li class="<%= controller_name == 'organisations' ? 'active' : '' %>"><%= link_to t('activerecord.models.organisations.other'), organisations_path %></li>
+          <li class="<%= controller_name == 'people' ? 'active' : '' %>"><%= link_to t('activerecord.models.people.other'), people_path %></li>
+          <li class="<%= controller_name == 'curriculum_vitaes' ? 'active' : '' %>"><%= link_to t('activerecord.models.curriculum_vitae.abbreviation'), curriculum_vitaes_path %></li>
+        </ul>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+          <% if current_user.admin_access %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Admin
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Users', users_path %></li>
+              </ul>
+            </li>
+          <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <span class="glyphicon glyphicon-cog"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'My Profile', my_account_path %></li>
+              <li><%= link_to 'My Profile', my_profile_path %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to 'Sign out', current_user_session, method: :delete %></li>
             </ul>

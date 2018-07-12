@@ -1,14 +1,6 @@
 <%= form_for(@organisation, html: { class: 'form-horizontal' } ) do |f| %>
   <% if @organisation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t('views.general.validation_error', { count: @organisation.errors.count }) %></h2>
-
-      <ul>
-      <% @organisation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render partial: 'layouts/form_errors', locals: { thing: @organisation } %>
   <% end %>
 
   <div class="form-group">

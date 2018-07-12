@@ -73,9 +73,11 @@ en:
         first_name: First Name
         last_name: Last Name
         full_name: Name
+        current_password: Current Password
         password: Password
         password_confirmation: Confirm Password
         mobile_number: Mobile Number
+        admin_access: Admin Access
       user_sessions:
         email: Email
         password: Password

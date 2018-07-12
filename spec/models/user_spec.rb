@@ -32,6 +32,7 @@
 #  updated_at                      :datetime         not null
 #  account_activation_code         :string
 #  account_activation_code_sent_at :datetime
+#  admin_access                    :boolean          default(FALSE)
 #
 
 require 'rails_helper'

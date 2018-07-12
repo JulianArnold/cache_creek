@@ -1,13 +1,6 @@
 <%= form_for(@curriculum_vitae, html: { multipart: true, class: 'form-horizontal' }) do |f| %>
   <% if @curriculum_vitae.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t('views.general.validation_error', { count: @curriculum_vitae.errors.count }) %></h2>
-      <ul>
-      <% @curriculum_vitae.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render partial: 'layouts/form_errors', locals: { thing: @curriculum_vitae } %>
   <% end %>
 
   <div class="form-group">

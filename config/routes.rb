@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :opportunities
   resources :organisations
+  resources :password_changes, only: [:new, :create]
   resources :people
   resources :users, except: [:new, :create]
   resources :user_sessions, only: [:new, :create, :destroy]
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
       get 'confirm/:code', action: :confirm, as: :confirm
     end
   end
-  get '/my_account', to: 'users#show', as: :my_account
+  get '/my_profile', to: 'users#show', as: :my_profile
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

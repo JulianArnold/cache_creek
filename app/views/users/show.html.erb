@@ -21,9 +21,16 @@
 
     <br />
 
-    <div class="btn-group">
-      <%= link_to t('views.general.edit'), edit_user_path(@user), class: 'btn btn-success' %>
-      <%= link_to t('views.general.back'), users_path, class: 'btn btn-success' %>
+    <div class="col-xs-6">
+      <div class="btn-group">
+        <%= link_to t('views.general.edit'), edit_user_path(@user), class: 'btn btn-success' %>
+        <%= link_to t('views.general.back'), users_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+    <div class="col-xs-6 text-right">
+      <% if current_user.id == @user.id %>
+        <%= link_to 'Change Password', new_password_change_path, class: 'btn btn-warning' %>
+      <% end %>
     </div>
   </div>
 </div>

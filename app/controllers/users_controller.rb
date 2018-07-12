@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   protected
 
   def get_user
-    @user = if current_user&.admin? && params[:id].present?
+    @user = if current_user&.admin_access && params[:id].present?
               User.find(params[:id])
             else
               current_user
@@ -46,7 +46,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :mobile_number)
+    if current_user&.admin_access
+      params.require(:user).permit(:first_name, :last_name, :email, :mobile_number, :admin_access)
+    else
+      params.require(:user).permit(:first_name, :last_name, :email, :mobile_number)
+    end
   end
 
   def add_breadcrumbs

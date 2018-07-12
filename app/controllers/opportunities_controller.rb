@@ -6,7 +6,7 @@ class OpportunitiesController < ApplicationController
   # GET /opportunities
   # GET /opportunities.json
   def index
-    @opportunities = current_user_opportunities.order(updated_at: :desc).all
+    @opportunities = findable_opportunities.order(updated_at: :desc).all
   end
 
   # GET /opportunities/1
@@ -15,7 +15,7 @@ class OpportunitiesController < ApplicationController
 
   # GET /opportunities/new
   def new
-    @opportunity = current_user_opportunities.new
+    @opportunity = findable_opportunities.new
   end
 
   # GET /opportunities/1/edit
@@ -24,7 +24,7 @@ class OpportunitiesController < ApplicationController
   # POST /opportunities
   # POST /opportunities.json
   def create
-    @opportunity = current_user_opportunities.new(opportunity_params)
+    @opportunity = findable_opportunities.new(opportunity_params)
 
     respond_to do |format|
       if @opportunity.save
@@ -63,13 +63,17 @@ class OpportunitiesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def current_user_opportunities
-    current_user.opportunities
+  # Returns an Active Record relation (a collection) of Opportunities, based on the user's permission.
+  def findable_opportunities
+    if current_user.admin_access
+      Opportunity
+    else
+      current_user.opportunities
+    end
   end
 
   def set_opportunity
-    @opportunity = current_user_opportunities.find(params[:id])
+    @opportunity = findable_opportunities.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -78,8 +82,9 @@ class OpportunitiesController < ApplicationController
   end
 
   def set_variables
-    @organisations = current_user.organisations.order(:name)
-    @people = current_user.people.order(:last_name, :first_name)
+    owner = @opportunity.user || current_user
+    @organisations = owner.organisations.order(:name)
+    @people = owner.people.order(:last_name, :first_name)
   end
 
   def add_breadcrumbs
