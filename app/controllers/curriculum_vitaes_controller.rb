@@ -7,6 +7,10 @@ class CurriculumVitaesController < ApplicationController
   # GET /curriculum_vitaes.json
   def index
     @curriculum_vitaes = findable_curriculum_vitaes.all
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @curriculum_vitaes }
+    end
   end
 
   # GET /curriculum_vitaes/1
