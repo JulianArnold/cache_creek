@@ -1,0 +1,49 @@
+<%= form_for(@admin_subscription_plan) do |f| %>
+  <% if @admin_subscription_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_subscription_plan.errors.count, "error") %> prohibited this admin_subscription_plan from being saved:</h2>
+
+      <ul>
+      <% @admin_subscription_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :price_cent %><br>
+    <%= f.number_field :price_cent %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_frequency_months %><br>
+    <%= f.number_field :billing_frequency_months %>
+  </div>
+  <div class="field">
+    <%= f.label :currency %><br>
+    <%= f.text_field :currency %>
+  </div>
+  <div class="field">
+    <%= f.label :stripe_uuid %><br>
+    <%= f.text_field :stripe_uuid %>
+  </div>
+  <div class="field">
+    <%= f.label :trial_period_days %><br>
+    <%= f.number_field :trial_period_days %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :subscription_product_id %><br>
+    <%= f.number_field :subscription_product_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

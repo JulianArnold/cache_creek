@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Subscription Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price cent</th>
+      <th>Billing frequency months</th>
+      <th>Currency</th>
+      <th>Stripe uuid</th>
+      <th>Trial period days</th>
+      <th>Active</th>
+      <th>Subscription product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_subscription_plans.each do |admin_subscription_plan| %>
+      <tr>
+        <td><%= admin_subscription_plan.name %></td>
+        <td><%= admin_subscription_plan.price_cent %></td>
+        <td><%= admin_subscription_plan.billing_frequency_months %></td>
+        <td><%= admin_subscription_plan.currency %></td>
+        <td><%= admin_subscription_plan.stripe_uuid %></td>
+        <td><%= admin_subscription_plan.trial_period_days %></td>
+        <td><%= admin_subscription_plan.active %></td>
+        <td><%= admin_subscription_plan.subscription_product_id %></td>
+        <td><%= link_to 'Show', admin_subscription_plan %></td>
+        <td><%= link_to 'Edit', edit_admin_subscription_plan_path(admin_subscription_plan) %></td>
+        <td><%= link_to 'Destroy', admin_subscription_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subscription plan', new_admin_subscription_plan_path %>

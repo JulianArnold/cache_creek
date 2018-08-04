@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180709204656) do
+ActiveRecord::Schema.define(version: 20180727210820) do
+
+  create_table "admin_subscription_plans", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price_cent",               default: 0
+    t.integer  "billing_frequency_months"
+    t.string   "currency"
+    t.string   "stripe_uuid"
+    t.integer  "trial_period_days"
+    t.boolean  "active"
+    t.integer  "subscription_product_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "admin_subscription_plans", ["stripe_uuid"], name: "index_admin_subscription_plans_on_stripe_uuid"
+  add_index "admin_subscription_plans", ["subscription_product_id"], name: "index_admin_subscription_plans_on_subscription_product_id"
 
   create_table "curriculum_vitaes", force: :cascade do |t|
     t.string   "name"

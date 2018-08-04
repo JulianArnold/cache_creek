@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin_subscription_plan.name %>
+</p>
+
+<p>
+  <strong>Price cent:</strong>
+  <%= @admin_subscription_plan.price_cent %>
+</p>
+
+<p>
+  <strong>Billing frequency months:</strong>
+  <%= @admin_subscription_plan.billing_frequency_months %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @admin_subscription_plan.currency %>
+</p>
+
+<p>
+  <strong>Stripe uuid:</strong>
+  <%= @admin_subscription_plan.stripe_uuid %>
+</p>
+
+<p>
+  <strong>Trial period days:</strong>
+  <%= @admin_subscription_plan.trial_period_days %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @admin_subscription_plan.active %>
+</p>
+
+<p>
+  <strong>Subscription product:</strong>
+  <%= @admin_subscription_plan.subscription_product_id %>
+</p>
+
+<%= link_to 'Edit', edit_admin_subscription_plan_path(@admin_subscription_plan) %> |
+<%= link_to 'Back', admin_subscription_plans_path %>
