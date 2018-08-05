@@ -63,7 +63,7 @@ group :development do
   # gem 'spring'
 end
 
-group :staging, :production do
+group :production, :staging do
   gem 'pg'
   gem 'rails_12factor'
 end
