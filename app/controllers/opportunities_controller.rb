@@ -82,7 +82,7 @@ class OpportunitiesController < ApplicationController
   end
 
   def set_variables
-    owner = @opportunity.user || current_user
+    owner = @opportunity&.user || current_user
     @organisations = owner.organisations.order(:name)
     @people = owner.people.order(:last_name, :first_name)
   end
