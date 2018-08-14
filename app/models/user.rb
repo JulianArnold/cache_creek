@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     c.validates_uniqueness_of_email_field_options = { case_sensitive: false }
     c.validates_format_of_email_field_options = { with: Authlogic::Regex.email_nonascii }
     c.crypto_provider = Authlogic::CryptoProviders::SCrypt
-    c.logged_in_timeout = 10.minutes
+    c.logged_in_timeout = 20.minutes
   end
 
   # relationships
