@@ -38,7 +38,7 @@
               <%= sms_to person.phone %>
             </td>
             <td><%= linkedin_to person.linkedin_profile_url %></td>
-            <td><%= person.next_contact_on.strftime('%-d %b %Y') %></td>
+            <td><%= person.next_contact_on&.strftime('%-d %b %Y') %></td>
             <td><%= person.source_of_contact %></td>
             <td><%= person.cv_sent_on&.strftime('%-d %b %Y') %></td>
             <td><%= person.cv_version %></td>
