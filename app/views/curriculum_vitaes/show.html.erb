@@ -17,7 +17,11 @@
       <tr>
         <th><%= t('activerecord.attributes.curriculum_vitae.upload') %></th>
         <td>
-          <%= link_to @curriculum_vitae.upload_file_name, upload_curriculum_vitae_path(@curriculum_vitae.id), target: '_blank' %>
+          <% if Rails.env.production? %>
+            <%= link_to @curriculum_vitae.upload_file_name, @curriculum_vitae.upload.expiring_url(300), target: '_blank' %>
+          <% else %>
+            <%= link_to @curriculum_vitae.upload_file_name, upload_curriculum_vitae_path(@curriculum_vitae.id), target: '_blank' %>
+          <% end %>
         </td>
       </tr>
       </tbody>
