@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -44,8 +46,9 @@ Rails.application.configure do
 
   # Paperclip configuration
   config.paperclip_defaults = {
-      # storage: :file,
-      path: ':rails_root/tmp/files/:class/:attachment/:id/:filename' # change id_partition to id
+    # storage: :file,
+    url: ':rails_root/tmp/files/:class/:attachment/:id/:filename',
+    path: ':rails_root/tmp/files/:class/:attachment/:id/:filename' # change id_partition to id
   }
 
   # Gmail sending configuration
@@ -54,13 +57,13 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      # domain:               'example.com',
-      user_name:            ENV['GMAIL_EMAIL_ADDRESS'],
-      password:             ENV['GMAIL_PASSWORD'],
-      authentication:       'plain',
-      enable_starttls_auto: true,
-      raise_delivery_errors: true
+    address:              'smtp.gmail.com',
+    port:                 587,
+    # domain:               'example.com',
+    user_name:            ENV['GMAIL_EMAIL_ADDRESS'],
+    password:             ENV['GMAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true,
+    raise_delivery_errors: true
   }
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -83,13 +85,28 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      # domain:               'example.com',
-      user_name:            ENV['GMAIL_EMAIL_ADDRESS'],
-      password:             ENV['GMAIL_PASSWORD'],
-      authentication:       'plain',
-      enable_starttls_auto: true,
-      raise_delivery_errors: true
+    address:              'smtp.gmail.com',
+    port:                 587,
+    # domain:               'example.com',
+    user_name:            ENV['GMAIL_EMAIL_ADDRESS'],
+    password:             ENV['GMAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true,
+    raise_delivery_errors: true
+  }
+
+  # paperclip configuration
+  config.paperclip_defaults = {
+    # url: '/:class/:id/:filename',
+    path: '/:class/:id/:filename',
+    storage: :s3,
+    s3_permissions: 'private',
+    s3_protocol: 'https',
+    s3_credentials: {
+      bucket: 'cache-creek-herokuapp-eu',
+      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+      s3_region: 'eu-west-1'
+    }
   }
 end
