@@ -73,7 +73,7 @@ class CurriculumVitaesController < ApplicationController
       send_file "#{Rails.root}/tmp/files/curriculum_vitaes/uploads/#{@curriculum_vitae.id}/#{@curriculum_vitae.upload_file_name}",
                 type: @curriculum_vitae.upload_content_type
     else
-      send_file @curriculum_vitae.upload.expiring_url(60), type: @curriculum_vitae.upload_content_type
+      render text: "You shouldn't be seeing this."
     end
   end
 
