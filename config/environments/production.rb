@@ -97,7 +97,7 @@ Rails.application.configure do
 
   # paperclip configuration
   config.paperclip_defaults = {
-    # url: '/:class/:id/:filename',
+    url: ':s3_domain_url',
     path: '/:class/:id/:filename',
     storage: :s3,
     s3_permissions: 'private',
