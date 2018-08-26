@@ -16,6 +16,10 @@
           <th><%= t('activerecord.attributes.users.mobile_number') %></th>
           <td><%= phone_to @user.mobile_number %></td>
         </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.users.admin_subscription_product_id') %></th>
+          <td><%= link_to @user.admin_subscription_product.name, @user.admin_subscription_product %></td>
+        </tr>
       </tbody>
     </table>
 

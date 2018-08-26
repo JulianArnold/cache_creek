@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.name') %></th>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.price_cent') %></th>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.billing_frequency_months') %></th>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.currency') %></th>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.stripe_uuid') %></th>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.trial_period_days') %></th>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.active') %></th>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.subscription_product_id') %></th>
+          <th><%= t('activerecord.attributes.admin_subscription_plans.updated') %></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @admin_subscription_plans.each do |admin_subscription_plan| %>
+          <tr>
+            <td><%= admin_subscription_plan.name %></td>
+            <td><%= admin_subscription_plan.price_cent %></td>
+            <td><%= admin_subscription_plan.billing_frequency_months %></td>
+            <td><%= admin_subscription_plan.currency %></td>
+            <td><%= admin_subscription_plan.stripe_uuid %></td>
+            <td><%= admin_subscription_plan.trial_period_days %></td>
+            <td><%= admin_subscription_plan.active %></td>
+            <td><%= admin_subscription_plan.subscription_product_id %></td>
+            <td><%= admin_subscription_plan.updated_at.strftime('%-d %b %Y, %H:%M') %></td>
+            <td>
+              <%= link_to edit_admin_subscription_plan_path(admin_subscription_plan) do %>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to admin_subscription_plan, method: :delete, data: { confirm: I18n.t('views.general.are_you_sure') } do %>
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

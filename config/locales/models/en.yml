@@ -22,6 +22,9 @@ en:
         odd: "must be odd"
         even: "must be even"
     models:
+      admin_subscription_products:
+        one: Subscription Product
+        other: Subscription Products
       curriculum_vitae:
         one: Curriculum Vitae
         other: Curriculum Vitaes
@@ -39,6 +42,27 @@ en:
         one: User
         other: Users
     attributes:
+      admin_subscription_plans:
+        name: Name
+        price_cent: Price
+        billing_frequency_months: Billing Frequency (Months)
+        currency: Currency
+        stripe_uuid: Stripe ID
+        trial_period_days: Trial Period (Days)
+        active: Active
+        subscription_product_id: Subscription Product ID
+        updated: Updated
+      admin_subscription_products:
+        name: Name
+        description: Description
+        curriculum_vitae_limited: Curriculum vitaes limited?
+        curriculum_vitae_limit: Curriculum vitaes limit
+        opportunity_limited: Opportunities limited?
+        opportunity_limit: Opportunities limit
+        organisation_limited: Organisations limited?
+        organisation_limit: Organisations limit
+        person_limited: People limited?
+        person_limit: People limit
       curriculum_vitae:
         name: Name
         description: Description
@@ -78,6 +102,7 @@ en:
         password_confirmation: Confirm Password
         mobile_number: Mobile Number
         admin_access: Admin Access
+        admin_subscription_product_id: Subscription Product
       user_sessions:
         email: Email
         password: Password

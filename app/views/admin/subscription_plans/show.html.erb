@@ -1,44 +1,47 @@
-<p id="notice"><%= notice %></p>
+<%= page_heading(@admin_subscription_plan.name) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @admin_subscription_plan.name %>
-</p>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.subscription_product_id') %></th>
+          <td class="col-sm-9"><%= @admin_subscription_plan.subscription_product_id %></td>
+        </tr>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.name') %></th>
+          <td class="col-sm-9"><%= @admin_subscription_plan.name %></td>
+        </tr>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.price_cent') %></th>
+          <td class="col-sm-9"><%= @admin_subscription_plan.price_cent %></td>
+        </tr>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.billing_frequency_months') %></th>
+          <td class="col-sm-9"><%= @admin_subscription_plan.billing_frequency_months %></td>
+        </tr>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.currency') %></th>
+          <td class="col-sm-9"><%= @admin_subscription_plan.currency %></td>
+        </tr>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.stripe_uuid') %></th>
+          <td class="col-sm-9"><%= @admin_subscription_plan.stripe_uuid %></td>
+        </tr>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.trial_period_days') %></th>
+          <td class="col-sm-9"><%= @admin_subscription_plan.trial_period_days %></td>
+        </tr>
+        <tr>
+          <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.active') %></th>
+          <td class="col-sm-9"><%= @admin_subscription_plan.active %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<p>
-  <strong>Price cent:</strong>
-  <%= @admin_subscription_plan.price_cent %>
-</p>
-
-<p>
-  <strong>Billing frequency months:</strong>
-  <%= @admin_subscription_plan.billing_frequency_months %>
-</p>
-
-<p>
-  <strong>Currency:</strong>
-  <%= @admin_subscription_plan.currency %>
-</p>
-
-<p>
-  <strong>Stripe uuid:</strong>
-  <%= @admin_subscription_plan.stripe_uuid %>
-</p>
-
-<p>
-  <strong>Trial period days:</strong>
-  <%= @admin_subscription_plan.trial_period_days %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @admin_subscription_plan.active %>
-</p>
-
-<p>
-  <strong>Subscription product:</strong>
-  <%= @admin_subscription_plan.subscription_product_id %>
-</p>
-
-<%= link_to 'Edit', edit_admin_subscription_plan_path(@admin_subscription_plan) %> |
-<%= link_to 'Back', admin_subscription_plans_path %>
+<div class="btn-group">
+  <%= link_to t('views.general.edit'), edit_admin_subscription_plan_path(@admin_subscription_plan), class: 'btn btn-success' %>
+  <%= link_to t('views.general.back'), admin_subscription_plans_path, class: 'btn btn-success' %>
+</div>

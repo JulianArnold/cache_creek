@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lock version:</strong>
+  <%= @admin_subscription_product.lock_version %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin_subscription_product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @admin_subscription_product.description %>
+</p>
+
+<p>
+  <strong>Curriculum vitae limited?:</strong>
+  <%= @admin_subscription_product.curriculum_vitae_limited %>
+</p>
+
+<p>
+  <strong>Curriculum vitae limit:</strong>
+  <%= @admin_subscription_product.curriculum_vitae_limit %>
+</p>
+
+<p>
+  <strong>Opportunity limited?:</strong>
+  <%= @admin_subscription_product.opportunity_limited %>
+</p>
+
+<p>
+  <strong>Opportunity limit:</strong>
+  <%= @admin_subscription_product.opportunity_limit %>
+</p>
+
+<p>
+  <strong>Organisation limited?:</strong>
+  <%= @admin_subscription_product.organisation_limited %>
+</p>
+
+<p>
+  <strong>Organisation limit:</strong>
+  <%= @admin_subscription_product.organisation_limit %>
+</p>
+
+<p>
+  <strong>Person limited?:</strong>
+  <%= @admin_subscription_product.person_limited %>
+</p>
+
+<p>
+  <strong>Person limit:</strong>
+  <%= @admin_subscription_product.person_limit %>
+</p>
+
+<%= link_to 'Edit', edit_admin_subscription_product_path(@admin_subscription_product) %> |
+<%= link_to 'Back', admin_subscription_products_path %>

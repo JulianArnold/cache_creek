@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :admin_access_required, except: %i[show edit update]
   before_action :get_user, except: :index
+  before_action :get_variables, except: :index
   before_action :add_breadcrumbs
 
   def index
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
 
   def user_params
     if current_user&.admin_access
-      params.require(:user).permit(:first_name, :last_name, :email, :mobile_number, :admin_access)
+      params.require(:user).permit(:first_name, :last_name, :email, :mobile_number, :admin_access, :admin_subscription_product_id)
     else
       params.require(:user).permit(:first_name, :last_name, :email, :mobile_number)
     end
@@ -57,5 +58,9 @@ class UsersController < ApplicationController
     @breadcrumbs << { label: I18n.t('activerecord.models.users.other'), path: users_path }
     @breadcrumbs << { label: @user.full_name, path: @user } if defined?(@user)
     @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_user_path(@user) } if %w[edit update].include?(action_name)
+  end
+
+  def get_variables
+    @admin_subscription_products = Admin::SubscriptionProduct.all_in_order
   end
 end

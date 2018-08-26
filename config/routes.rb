@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :subscription_products
     resources :subscription_plans
   end
   resources :curriculum_vitaes do

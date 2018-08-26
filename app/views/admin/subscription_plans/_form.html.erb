@@ -1,49 +1,74 @@
-<%= form_for(@admin_subscription_plan) do |f| %>
-  <% if @admin_subscription_plan.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@admin_subscription_plan.errors.count, "error") %> prohibited this admin_subscription_plan from being saved:</h2>
+<%= form_for(@admin_subscription_plan, html: { class: 'form-horizontal' }) do |f| %>
+    <% if @admin_subscription_plan.errors.any? %>
+        <%= render partial: 'layouts/form_errors', locals: { thing: @admin_subscription_plan } %>
+    <% end %>
 
-      <ul>
-      <% @admin_subscription_plan.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="form-group">
+      <%= f.label :name, t('activerecord.attributes.admin_subscription_plans.name'), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :price_cent %><br>
-    <%= f.number_field :price_cent %>
-  </div>
-  <div class="field">
-    <%= f.label :billing_frequency_months %><br>
-    <%= f.number_field :billing_frequency_months %>
-  </div>
-  <div class="field">
-    <%= f.label :currency %><br>
-    <%= f.text_field :currency %>
-  </div>
-  <div class="field">
-    <%= f.label :stripe_uuid %><br>
-    <%= f.text_field :stripe_uuid %>
-  </div>
-  <div class="field">
-    <%= f.label :trial_period_days %><br>
-    <%= f.number_field :trial_period_days %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
-  </div>
-  <div class="field">
-    <%= f.label :subscription_product_id %><br>
-    <%= f.number_field :subscription_product_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="form-group">
+      <%= f.label :price_cent, t('activerecord.attributes.admin_subscription_plans.price_cent'), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :price_cent, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :billing_frequency_months, t('activerecord.attributes.admin_subscription_plans.billing_frequency_months'), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :billing_frequency_months, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :currency, t('activerecord.attributes.admin_subscription_plans.currency'), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :currency, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :stripe_uuid, t('activerecord.attributes.admin_subscription_plans.stripe_uuid'), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :stripe_uuid, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :trial_period_days, t('activerecord.attributes.admin_subscription_plans.trial_period_days'), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :trial_period_days, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <div class="checkbox">
+          <%= f.label :active do %>
+            <%= f.check_box :active %>
+            <%= t('activerecord.attributes.admin_subscription_plans.active') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :subscription_product_id, t('activerecord.attributes.admin_subscription_plans.subscription_product_id'), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.collection_select :subscription_product_id, @admin_subscription_products, :id, :name, {}, { class: 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <%= f.submit t('views.general.save'), class: 'btn btn-success'%>
+        <%= t('views.general.or') %>
+        <%= link_to t('views.general.cancel'), admin_subscription_plans_path %>
+      </div>
+    </div>
+
 <% end %>

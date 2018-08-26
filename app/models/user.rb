@@ -33,6 +33,7 @@
 #  account_activation_code         :string
 #  account_activation_code_sent_at :datetime
 #  admin_access                    :boolean          default(FALSE)
+#  admin_subscription_product_id   :integer
 #
 
 class User < ActiveRecord::Base
@@ -43,7 +44,7 @@ class User < ActiveRecord::Base
     c.validates_uniqueness_of_email_field_options = { case_sensitive: false }
     c.validates_format_of_email_field_options = { with: Authlogic::Regex.email_nonascii }
     c.crypto_provider = Authlogic::CryptoProviders::SCrypt
-    c.logged_in_timeout = 20.minutes
+    c.logged_in_timeout = 30.minutes
   end
 
   # relationships
@@ -51,6 +52,8 @@ class User < ActiveRecord::Base
   has_many :people
   has_many :opportunities
   has_many :curriculum_vitaes
+  belongs_to :admin_subscription_product, class_name: 'Admin::SubscriptionProduct',
+             foreign_key: :admin_subscription_product_id
 
   # validations
   validates :first_name, presence: true

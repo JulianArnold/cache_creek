@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180727210820) do
+ActiveRecord::Schema.define(version: 20180820212609) do
 
   create_table "admin_subscription_plans", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +28,22 @@ ActiveRecord::Schema.define(version: 20180727210820) do
 
   add_index "admin_subscription_plans", ["stripe_uuid"], name: "index_admin_subscription_plans_on_stripe_uuid"
   add_index "admin_subscription_plans", ["subscription_product_id"], name: "index_admin_subscription_plans_on_subscription_product_id"
+
+  create_table "admin_subscription_products", force: :cascade do |t|
+    t.integer  "lock_version",             default: 0
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "curriculum_vitae_limited", default: true
+    t.integer  "curriculum_vitae_limit",   default: 0
+    t.boolean  "opportunity_limited",      default: true
+    t.integer  "opportunity_limit",        default: 0
+    t.boolean  "organisation_limited",     default: true
+    t.integer  "organisation_limit",       default: 0
+    t.boolean  "person_limited",           default: true
+    t.integer  "person_limit",             default: 0
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "curriculum_vitaes", force: :cascade do |t|
     t.string   "name"
@@ -117,9 +133,11 @@ ActiveRecord::Schema.define(version: 20180727210820) do
     t.string   "account_activation_code"
     t.datetime "account_activation_code_sent_at"
     t.boolean  "admin_access",                    default: false
+    t.integer  "admin_subscription_product_id"
   end
 
   add_index "users", ["account_activation_code"], name: "index_users_on_account_activation_code"
+  add_index "users", ["admin_subscription_product_id"], name: "index_users_on_admin_subscription_product_id"
   add_index "users", ["email"], name: "index_users_on_email"
 
 end

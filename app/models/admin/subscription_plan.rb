@@ -36,6 +36,11 @@ module Admin
     before_destroy :ok_to_delete # if true proceed to the next callback OR stop (return false: callback chain halted)
     before_destroy :delete_from_stripe
 
+    # scopes
+    scope :all_in_order, -> { order(:name) }
+    scope :all_active, -> { where(active: true) }
+    scope :all_inactive, -> { where.not(active: true) }
+
     def create_on_stripe
       self.stripe_uuid = Stripe::Plan.create(
         amount: price_cent,

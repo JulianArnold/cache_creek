@@ -1,6 +1,7 @@
 module Admin
   class SubscriptionPlansController < Admin::BaseController
     before_action :set_admin_subscription_plan, only: [:show, :edit, :update, :destroy]
+    before_action :set_variables, except: %i[index destroy]
 
     # GET /admin/subscription_plans
     # GET /admin/subscription_plans.json
@@ -75,6 +76,10 @@ module Admin
       # Never trust parameters from the scary internet, only allow the white list through.
       def admin_subscription_plan_params
         params.require(:admin_subscription_plan).permit(:name, :price_cent, :billing_frequency_months, :currency, :stripe_uuid, :trial_period_days, :active, :subscription_product_id)
+      end
+
+      def set_variables
+        @admin_subscription_products = Admin::SubscriptionProduct.all_in_order
       end
   end
 end

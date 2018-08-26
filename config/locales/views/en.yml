@@ -49,6 +49,14 @@ en:
         new: New Person
       new:
         h1: New Person
+    subscription_plans:
+      edit:
+        h1: Edit Subscription Plan
+      index:
+        h1: Subscription Plans
+        new: New Subscription Plan
+      new:
+        h1: New Subscription Plan
     users:
       edit:
         h1: Edit User

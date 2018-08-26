@@ -33,6 +33,7 @@
 #  account_activation_code         :string
 #  account_activation_code_sent_at :datetime
 #  admin_access                    :boolean          default(FALSE)
+#  admin_subscription_product_id   :integer
 #
 
 require 'rails_helper'
