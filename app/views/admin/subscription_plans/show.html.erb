@@ -6,7 +6,7 @@
       <tbody>
         <tr>
           <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.subscription_product_id') %></th>
-          <td class="col-sm-9"><%= @admin_subscription_plan.subscription_product_id %></td>
+          <td class="col-sm-9"><%= link_to @admin_subscription_plan.admin_subscription_product&.name, @admin_subscription_plan.admin_subscription_product %></td>
         </tr>
         <tr>
           <th class="col-sm-3"><%= t('activerecord.attributes.admin_subscription_plans.name') %></th>

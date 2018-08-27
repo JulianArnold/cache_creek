@@ -20,6 +20,9 @@
 module Admin
   # holds our subscription plans (which are synced with Stripe)
   class SubscriptionPlan < ActiveRecord::Base
+    # relationships
+    belongs_to :admin_subscription_product, class_name: 'Admin::SubscriptionProduct', foreign_key: :subscription_product_id
+
     # validations
     validates :name, presence: true, uniqueness: true
     validates :price_cent, presence: true, numericality: { greater_than_or_equal_to: 0 }

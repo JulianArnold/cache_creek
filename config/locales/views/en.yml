@@ -57,6 +57,14 @@ en:
         new: New Subscription Plan
       new:
         h1: New Subscription Plan
+    subscription_products:
+      edit:
+        h1: Edit Subscription Product
+      index:
+        h1: Subscription Products
+        new: New Subscription Product
+      new:
+        h1: New Subscription Product
     users:
       edit:
         h1: Edit User

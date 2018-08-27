@@ -16,7 +16,7 @@ module Admin
 
     # GET /admin/subscription_plans/new
     def new
-      @admin_subscription_plan = Admin::SubscriptionPlan.new
+      @admin_subscription_plan = Admin::SubscriptionPlan.new(subscription_product_id: params[:subscription_product_id])
     end
 
     # GET /admin/subscription_plans/1/edit

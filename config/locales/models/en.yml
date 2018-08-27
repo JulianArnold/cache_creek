@@ -50,18 +50,18 @@ en:
         stripe_uuid: Stripe ID
         trial_period_days: Trial Period (Days)
         active: Active
-        subscription_product_id: Subscription Product ID
+        subscription_product_id: Subscription Product
         updated: Updated
       admin_subscription_products:
         name: Name
         description: Description
-        curriculum_vitae_limited: Curriculum vitaes limited?
+        curriculum_vitae_limited: Curriculum vitaes limited
         curriculum_vitae_limit: Curriculum vitaes limit
-        opportunity_limited: Opportunities limited?
+        opportunity_limited: Opportunities limited
         opportunity_limit: Opportunities limit
-        organisation_limited: Organisations limited?
+        organisation_limited: Organisations limited
         organisation_limit: Organisations limit
-        person_limited: People limited?
+        person_limited: People limited
         person_limit: People limit
       curriculum_vitae:
         name: Name
@@ -88,7 +88,7 @@ en:
         linkedin_profile_url: LinkedIn profile
         next_contact_on: Next contact
         source_of_contact: Source of contact
-        cv_sent_on: CV sent
+        cv_sent_on: CV sent on (date)
         cv_version: CV version
         status: Status
       send_sms: send SMS

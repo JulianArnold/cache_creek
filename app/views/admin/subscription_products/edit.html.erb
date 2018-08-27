@@ -1,6 +1,7 @@
-<h1>Editing Admin Subscription Product</h1>
+<%= page_heading(t('views.subscription_products.edit.h1')) %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @admin_subscription_product %> |
-<%= link_to 'Back', admin_subscription_products_path %>
+<div class="row">
+  <div class="col-sm-12">
+    <%= render 'form' %>
+  </div>
+</div>

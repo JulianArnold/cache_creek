@@ -21,6 +21,7 @@
 class Admin::SubscriptionProduct < ActiveRecord::Base
   # relationships
   has_many :users
+  has_many :admin_subscription_plans, class_name: 'Admin::SubscriptionPlan', foreign_key: :subscription_product_id
 
   # validations
   validates :name, presence: true, uniqueness: true,
