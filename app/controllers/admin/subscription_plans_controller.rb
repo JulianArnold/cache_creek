@@ -2,6 +2,7 @@ module Admin
   class SubscriptionPlansController < Admin::BaseController
     before_action :set_admin_subscription_plan, only: [:show, :edit, :update, :destroy]
     before_action :set_variables, except: %i[index destroy]
+    before_action :add_breadcrumbs
 
     # GET /admin/subscription_plans
     # GET /admin/subscription_plans.json
@@ -80,6 +81,13 @@ module Admin
 
       def set_variables
         @admin_subscription_products = Admin::SubscriptionProduct.all_in_order
+      end
+
+      def add_breadcrumbs
+        @breadcrumbs << { label: I18n.t('activerecord.models.admin_subscription_plans.other'), path: admin_subscription_plans_path }
+        @breadcrumbs << { label: @admin_subscription_plan.name, path: @admin_subscription_plan } if defined?(admin_subscription_plan)
+        @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_admin_subscription_plan_path(admin_subscription_plan) } if %w[edit update].include?(action_name)
+        @breadcrumbs << { label: I18n.t('views.general.new'), path: new_admin_subscription_plan_path } if %w[new create].include?(action_name)
       end
   end
 end

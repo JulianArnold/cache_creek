@@ -18,23 +18,26 @@
         </tr>
         <tr>
           <th><%= t('activerecord.attributes.users.admin_subscription_product_id') %></th>
-          <td><%= link_to @user.admin_subscription_product.name, @user.admin_subscription_product %></td>
+          <td>
+            <% if @user.admin_subscription_product %>
+              <%= link_to @user.admin_subscription_product&.name, @user.admin_subscription_product %>
+            <% end %>
+          </td>
         </tr>
       </tbody>
     </table>
-
-    <br />
-
-    <div class="col-xs-6">
-      <div class="btn-group">
-        <%= link_to t('views.general.edit'), edit_user_path(@user), class: 'btn btn-success' %>
-        <%= link_to t('views.general.back'), users_path, class: 'btn btn-success' %>
-      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="btn-group">
+      <%= link_to t('views.general.edit'), edit_user_path(@user), class: 'btn btn-success' %>
+      <%= link_to t('views.general.back'), users_path, class: 'btn btn-success' %>
     </div>
-    <div class="col-xs-6 text-right">
-      <% if current_user.id == @user.id %>
-        <%= link_to 'Change Password', new_password_change_path, class: 'btn btn-warning' %>
-      <% end %>
-    </div>
+  </div>
+  <div class="col-xs-6 text-right">
+    <% if current_user.id == @user.id %>
+      <%= link_to 'Change Password', new_password_change_path, class: 'btn btn-warning' %>
+    <% end %>
   </div>
 </div>

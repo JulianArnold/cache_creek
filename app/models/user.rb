@@ -100,6 +100,19 @@ class User < ActiveRecord::Base
     )
   end
 
+  def self.current_id=(id)
+    Thread.current[:user_id] = id
+  end
+
+  def self.current_id
+    Thread.current[:user_id]
+  end
+
+  def self.current
+    return nil if User.current_id.nil?
+    User.find_by(id: User.current_id)
+  end
+
   private
 
   def check_deletable

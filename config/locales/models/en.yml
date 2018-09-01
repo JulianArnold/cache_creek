@@ -22,6 +22,9 @@ en:
         odd: "must be odd"
         even: "must be even"
     models:
+      admin_subscription_plans:
+        one: Subscription Plan
+        other: Subscription Plans
       admin_subscription_products:
         one: Subscription Product
         other: Subscription Products

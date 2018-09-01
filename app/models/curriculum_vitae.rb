@@ -26,4 +26,26 @@ class CurriculumVitae < ActiveRecord::Base
                     # url: '/:class/:id/:filename'
   validates_attachment_content_type :upload, content_type: 'application/pdf'
   # validates_attachment_content_type :upload, content_type: /\A(application\/pdf)\z/
+
+  # callbacks
+  before_create :check_subscription_product_limit
+
+  private
+
+  def check_subscription_product_limit
+    product = User.current&.admin_subscription_product
+    if product.nil?
+      errors.add(:base, "You don't have a subscription")
+      Rails.logger.warn "User #{User.current_id} tried to create a CV but had no subscription_product."
+      return false
+    end
+    # return true if product.curriculum_vitae_limited # truthy
+    return true unless product.curriculum_vitae_limited # falsey
+    if product.curriculum_vitae_limit <= CurriculumVitae.where(user_id: User.current_id).count
+      # only runs when the person is over their limit
+      errors.add(:base, 'You have exceeded the limit for your subscription.  Your CV was not saved.')
+      return false
+    end
+    true
+  end
 end

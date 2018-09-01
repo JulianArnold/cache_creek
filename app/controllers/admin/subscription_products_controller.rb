@@ -3,6 +3,8 @@
 module Admin
   class SubscriptionProductsController < Admin::BaseController
     before_action :set_admin_subscription_product, only: %i[show edit update destroy]
+    before_action :add_breadcrumbs
+
 
     # GET /admin/subscription_products
     # GET /admin/subscription_products.json
@@ -76,5 +78,13 @@ module Admin
                                                          :opportunity_limit, :organisation_limited, :organisation_limit,
                                                          :person_limited, :person_limit)
     end
+
+    def add_breadcrumbs
+      @breadcrumbs << { label: I18n.t('activerecord.models.admin_subscription_products.other'), path: admin_subscription_products_path }
+      @breadcrumbs << { label: @admin_subscription_product.name, path: @admin_subscription_product } if defined?(admin_subscription_product)
+      @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_admin_subscription_product_path(admin_subscription_product) } if %w[edit update].include?(action_name)
+      @breadcrumbs << { label: I18n.t('views.general.new'), path: new_admin_subscription_product_path } if %w[new create].include?(action_name)
+    end
+
   end
 end
