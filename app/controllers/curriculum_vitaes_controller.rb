@@ -89,7 +89,8 @@ class CurriculumVitaesController < ApplicationController
   end
 
   def set_curriculum_vitae
-    @curriculum_vitae = findable_curriculum_vitaes.find(params[:id])
+    @curriculum_vitae = findable_curriculum_vitaes.find_by(id: params[:id].to_i)
+    redirect_to root_path and return unless @curriculum_vitae
   end
 
   def set_variables; end

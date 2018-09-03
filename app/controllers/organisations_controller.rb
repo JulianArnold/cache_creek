@@ -71,7 +71,8 @@ class OrganisationsController < ApplicationController
   end
 
   def set_organisation
-    @organisation = current_user_organisations.find(params[:id])
+    @organisation = current_user_organisations.find_by(id: params[:id].to_i)
+    redirect_to root_path and return unless @organisation
   end
 
   def set_variables; end

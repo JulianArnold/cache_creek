@@ -71,7 +71,8 @@ class PeopleController < ApplicationController
   end
 
   def set_person
-    @person = current_user_people.find(params[:id])
+    @person = current_user_people.find_by(id: params[:id].to_i)
+    redirect_to root_path and return unless @person
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

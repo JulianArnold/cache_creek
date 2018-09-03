@@ -75,7 +75,8 @@ class OpportunitiesController < ApplicationController
   end
 
   def set_opportunity
-    @opportunity = findable_opportunities.find(params[:id])
+    @opportunity = findable_opportunities.find_by(id: params[:id].to_i)
+    redirect_to root_path and return unless @opportunity
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
