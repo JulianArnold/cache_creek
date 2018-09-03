@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   namespace :admin do
     resources :subscription_products
     resources :subscription_plans
@@ -11,11 +12,11 @@ Rails.application.routes.draw do
   end
   resources :opportunities
   resources :organisations
-  resources :password_changes, only: [:new, :create]
+  resources :password_changes, only: %i[new create]
   resources :people
-  resources :users, except: [:new, :create]
-  resources :user_sessions, only: [:new, :create, :destroy]
-  resources :user_sign_ups, only: [:new, :create] do
+  resources :users, except: %i[new create]
+  resources :user_sessions, only: %i[new create destroy]
+  resources :user_sign_ups, only: %i[new create] do
     collection do
       get 'confirm/:code', action: :confirm, as: :confirm
     end

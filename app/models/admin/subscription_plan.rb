@@ -60,7 +60,7 @@ module Admin
     end
 
     def update_on_stripe
-      p = Stripe::Plan.retrieve(self.stripe_uuid)
+      p = Stripe::Plan.retrieve(stripe_uuid)
       p.active = active
       p.nickname = name
       p.trial_period_days = trial_period_days
@@ -77,7 +77,7 @@ module Admin
     end
 
     def read_from_stripe
-      Stripe::Plan.retrieve(self.stripe_uuid)
+      Stripe::Plan.retrieve(stripe_uuid)
     rescue Stripe::InvalidRequestError => err
       Rails.logger.error "Could not find subscription plan #{id} on Stripe: #{err}"
       nil
@@ -93,13 +93,13 @@ module Admin
       return true if stripe_plan.nil?
       stripe_plan.delete
       Rails.logger.info "Subscription plan #{id} deleted on Stripe: #{stripe_plan.to_h.to_json}"
-      return true
+      true
     rescue Stripe::InvalidRequestError => err
       Rails.logger.error "Could not delete subscription plan #{id} on Stripe: #{err}"
-      return false
+      false
     rescue Stripe::APIConnectionError => err
       Rails.logger.error "Could not get a response from Stripe.com when trying to delete subscription plan #{id} - error: #{err}"
-      return false
+      false
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserIdFields < ActiveRecord::Migration
   def change
     add_column :organisations, :user_id, :integer

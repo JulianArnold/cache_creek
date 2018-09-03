@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "admin/subscription_products/show", type: :view do
+RSpec.describe 'admin/subscription_products/show', type: :view do
   before(:each) do
     @admin_subscription_product = assign(:admin_subscription_product, Admin::SubscriptionProduct.create!(
-      :lock_version => 2,
-      :name => "Name",
-      :description => "MyText",
-      :curriculum_vitae_limited => false,
-      :curriculum_vitae_limit => 3,
-      :opportunity_limited => false,
-      :opportunity_limit => 4,
-      :organisation_limited => false,
-      :organisation_limit => 5,
-      :person_limited => false,
-      :person_limit => 6
-    ))
+                                                                        lock_version: 2,
+                                                                        name: 'Name',
+                                                                        description: 'MyText',
+                                                                        curriculum_vitae_limited: false,
+                                                                        curriculum_vitae_limit: 3,
+                                                                        opportunity_limited: false,
+                                                                        opportunity_limit: 4,
+                                                                        organisation_limited: false,
+                                                                        organisation_limit: 5,
+                                                                        person_limited: false,
+                                                                        person_limit: 6
+                                                                      ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/2/)
     expect(rendered).to match(/Name/)

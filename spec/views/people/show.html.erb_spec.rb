@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'people/show', type: :view do
@@ -12,7 +14,7 @@ RSpec.describe 'people/show', type: :view do
                                 source_of_contact: 'Source Of Contact',
                                 cv_version: 'Cv Version',
                                 status: 'Status'
-    ))
+                              ))
   end
 
   it 'renders attributes in <p>' do

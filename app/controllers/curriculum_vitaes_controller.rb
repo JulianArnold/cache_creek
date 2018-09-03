@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CurriculumVitaesController < ApplicationController
-  before_action :set_curriculum_vitae, only: [:show, :edit, :update, :destroy, :upload]
+  before_action :set_curriculum_vitae, only: %i[show edit update destroy upload]
   before_action :set_variables, except: %i[index destroy]
   before_action :add_breadcrumbs
 
@@ -15,8 +17,7 @@ class CurriculumVitaesController < ApplicationController
 
   # GET /curriculum_vitaes/1
   # GET /curriculum_vitaes/1.json
-  def show
-  end
+  def show; end
 
   # GET /curriculum_vitaes/new
   def new
@@ -24,8 +25,7 @@ class CurriculumVitaesController < ApplicationController
   end
 
   # GET /curriculum_vitaes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /curriculum_vitaes
   # POST /curriculum_vitaes.json

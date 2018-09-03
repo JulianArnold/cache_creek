@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: people
@@ -21,7 +23,7 @@
 
 class Person < ActiveRecord::Base
   STATUSES = ['New', 'Not Interested', 'Active', 'Dormant', 'Closed'].freeze
-  LABELS_FOR_STATUSES = { new: 'primary', not_interested: 'danger', active: 'success', dormant: 'warning', closed: 'default' }
+  LABELS_FOR_STATUSES = { new: 'primary', not_interested: 'danger', active: 'success', dormant: 'warning', closed: 'default' }.freeze
 
   belongs_to :organisation
   has_many :opportunities

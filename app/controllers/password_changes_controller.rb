@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # this controller handles change requests from people who are logged in
 class PasswordChangesController < ApplicationController
   before_action :add_breadcrumbs

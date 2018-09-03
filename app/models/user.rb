@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -53,7 +55,7 @@ class User < ActiveRecord::Base
   has_many :opportunities
   has_many :curriculum_vitaes
   belongs_to :admin_subscription_product, class_name: 'Admin::SubscriptionProduct',
-             foreign_key: :admin_subscription_product_id
+                                          foreign_key: :admin_subscription_product_id
 
   # validations
   validates :first_name, presence: true
@@ -73,13 +75,13 @@ class User < ActiveRecord::Base
     return false if params[:current_password].blank?
     return false if params[:password].blank?
     return false if params[:password_confirmation].blank?
-    unless self.valid_password?(params[:current_password])
+    unless valid_password?(params[:current_password])
       errors.add(:current_password, 'is invalid')
       return false
     end
     self.password = params[:password]
     self.password_confirmation = params[:password_confirmation]
-    self.save
+    save
   end
 
   def full_name
@@ -95,8 +97,8 @@ class User < ActiveRecord::Base
     return false unless user.account_activation_code_sent_at > (Time.now - 1.week)
     Rails.logger.debug "user ID = #{user.id}'s token is current."
     user.update_attributes(
-        account_activation_code: nil, account_activation_code_sent_at: nil,
-        active: true, approved: true, confirmed: true
+      account_activation_code: nil, account_activation_code_sent_at: nil,
+      active: true, approved: true, confirmed: true
     )
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'organisations/new', type: :view do
@@ -6,7 +8,7 @@ RSpec.describe 'organisations/new', type: :view do
                             name: 'MyString',
                             postal_address: 'MyText',
                             phone: 'MyString'
-    ))
+                          ))
   end
 
   it 'renders new organisation form' do

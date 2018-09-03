@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   # This method generates a dismissible bootstrap alert.
   # Inputs:
@@ -10,7 +12,7 @@ module ApplicationHelper
     return nil unless message.present?
     style = 'info' unless %w[success info danger].include?(style)
     content_tag(:div, class: "alert alert-#{style} alert-dismissible", role: 'alert') do
-      content_tag(:button, class: 'close', type: 'button', data: { dismiss: 'alert' }, aria: {label: 'Close' }) do
+      content_tag(:button, class: 'close', type: 'button', data: { dismiss: 'alert' }, aria: { label: 'Close' }) do
         content_tag(:span, sanitize('&times;'), aria: { hidden: true })
       end + message
     end
@@ -47,7 +49,7 @@ module ApplicationHelper
       content_tag(:div, class: 'col-sm-12') do
         content_tag(:div, class: 'page-header') do
           content_tag(:h1, page_title) +
-              (sub_title.present? ? content_tag(:p, sub_title, class: 'lead') : '')
+            (sub_title.present? ? content_tag(:p, sub_title, class: 'lead') : '')
         end
       end
     end

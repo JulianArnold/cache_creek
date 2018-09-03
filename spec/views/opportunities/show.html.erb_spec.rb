@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'opportunities/show', type: :view do
@@ -8,7 +10,7 @@ RSpec.describe 'opportunities/show', type: :view do
                                           job_title: 'Job Title',
                                           job_description: 'MyText',
                                           category: 'Category'
-    ))
+                                        ))
   end
 
   it 'renders attributes in <p>' do

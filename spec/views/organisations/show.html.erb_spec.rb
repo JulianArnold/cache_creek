@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'organisations/show', type: :view do
@@ -6,7 +8,7 @@ RSpec.describe 'organisations/show', type: :view do
                                             name: 'Name',
                                             postal_address: 'MyText',
                                             phone: 'Phone'
-    ))
+                                          ))
   end
 
   it 'renders attributes in <p>' do

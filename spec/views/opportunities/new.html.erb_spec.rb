@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'opportunities/new', type: :view do
@@ -8,7 +10,7 @@ RSpec.describe 'opportunities/new', type: :view do
                            job_title: 'MyString',
                            job_description: 'MyText',
                            category: 'MyString'
-    ))
+                         ))
   end
 
   it 'renders new opportunity form' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrganisationsController < ApplicationController
   before_action :set_organisation, only: %i[show edit update destroy]
   before_action :set_variables, except: %i[index destroy]

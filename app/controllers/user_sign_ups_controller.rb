@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserSignUpsController < ApplicationController
   skip_before_action :logged_in_required
   before_action :add_breadcrumbs

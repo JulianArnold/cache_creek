@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: organisations
@@ -14,7 +16,7 @@
 class Organisation < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :phone, format: /\A[\d(\+][\d\()\-\ ]{6,20}\z/,
-            allow_blank: true
+                    allow_blank: true
   has_many :people
   has_many :opportunities
   belongs_to :user

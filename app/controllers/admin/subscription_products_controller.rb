@@ -5,7 +5,6 @@ module Admin
     before_action :set_admin_subscription_product, only: %i[show edit update destroy]
     before_action :add_breadcrumbs
 
-
     # GET /admin/subscription_products
     # GET /admin/subscription_products.json
     def index
@@ -85,6 +84,5 @@ module Admin
       @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_admin_subscription_product_path(admin_subscription_product) } if %w[edit update].include?(action_name)
       @breadcrumbs << { label: I18n.t('views.general.new'), path: new_admin_subscription_product_path } if %w[new create].include?(action_name)
     end
-
   end
 end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   class SubscriptionPlansController < Admin::BaseController
-    before_action :set_admin_subscription_plan, only: [:show, :edit, :update, :destroy]
+    before_action :set_admin_subscription_plan, only: %i[show edit update destroy]
     before_action :set_variables, except: %i[index destroy]
     before_action :add_breadcrumbs
 
@@ -12,8 +14,7 @@ module Admin
 
     # GET /admin/subscription_plans/1
     # GET /admin/subscription_plans/1.json
-    def show
-    end
+    def show; end
 
     # GET /admin/subscription_plans/new
     def new
@@ -21,8 +22,7 @@ module Admin
     end
 
     # GET /admin/subscription_plans/1/edit
-    def edit
-    end
+    def edit; end
 
     # POST /admin/subscription_plans
     # POST /admin/subscription_plans.json
@@ -69,25 +69,26 @@ module Admin
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_admin_subscription_plan
-        @admin_subscription_plan = Admin::SubscriptionPlan.find(params[:id])
-      end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
-      def admin_subscription_plan_params
-        params.require(:admin_subscription_plan).permit(:name, :price_cent, :billing_frequency_months, :currency, :stripe_uuid, :trial_period_days, :active, :subscription_product_id)
-      end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_admin_subscription_plan
+      @admin_subscription_plan = Admin::SubscriptionPlan.find(params[:id])
+    end
 
-      def set_variables
-        @admin_subscription_products = Admin::SubscriptionProduct.all_in_order
-      end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def admin_subscription_plan_params
+      params.require(:admin_subscription_plan).permit(:name, :price_cent, :billing_frequency_months, :currency, :stripe_uuid, :trial_period_days, :active, :subscription_product_id)
+    end
 
-      def add_breadcrumbs
-        @breadcrumbs << { label: I18n.t('activerecord.models.admin_subscription_plans.other'), path: admin_subscription_plans_path }
-        @breadcrumbs << { label: @admin_subscription_plan.name, path: @admin_subscription_plan } if defined?(admin_subscription_plan)
-        @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_admin_subscription_plan_path(admin_subscription_plan) } if %w[edit update].include?(action_name)
-        @breadcrumbs << { label: I18n.t('views.general.new'), path: new_admin_subscription_plan_path } if %w[new create].include?(action_name)
-      end
+    def set_variables
+      @admin_subscription_products = Admin::SubscriptionProduct.all_in_order
+    end
+
+    def add_breadcrumbs
+      @breadcrumbs << { label: I18n.t('activerecord.models.admin_subscription_plans.other'), path: admin_subscription_plans_path }
+      @breadcrumbs << { label: @admin_subscription_plan.name, path: @admin_subscription_plan } if defined?(admin_subscription_plan)
+      @breadcrumbs << { label: I18n.t('views.general.edit'), path: edit_admin_subscription_plan_path(admin_subscription_plan) } if %w[edit update].include?(action_name)
+      @breadcrumbs << { label: I18n.t('views.general.new'), path: new_admin_subscription_plan_path } if %w[new create].include?(action_name)
+    end
   end
 end

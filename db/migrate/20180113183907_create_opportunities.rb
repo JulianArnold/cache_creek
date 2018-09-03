@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateOpportunities < ActiveRecord::Migration
   def change
     create_table :opportunities do |t|

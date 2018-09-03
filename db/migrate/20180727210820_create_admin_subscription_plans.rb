@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAdminSubscriptionPlans < ActiveRecord::Migration
   def change
     create_table :admin_subscription_plans do |t|

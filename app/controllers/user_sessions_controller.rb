@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserSessionsController < ApplicationController
   skip_before_action :logged_in_required, only: %i[new create]
   before_action :logged_out_required, only: %i[new create]

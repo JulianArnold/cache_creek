@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: opportunities
@@ -14,7 +16,6 @@
 #
 
 class Opportunity < ActiveRecord::Base
-
   belongs_to :organisation
   belongs_to :person
   belongs_to :user
@@ -26,7 +27,7 @@ class Opportunity < ActiveRecord::Base
   validate :match_organisation_to_person
 
   # scopes
-  scope :all_in_order, ->{ order(updated_at: :desc) }
+  scope :all_in_order, -> { order(updated_at: :desc) }
 
   # callbacks
   before_create :check_subscription_product_limit

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'people/edit', type: :view do
@@ -12,7 +14,7 @@ RSpec.describe 'people/edit', type: :view do
                                 source_of_contact: 'MyString',
                                 cv_version: 'MyString',
                                 status: 'MyString'
-    ))
+                              ))
   end
 
   it 'renders the edit person form' do
