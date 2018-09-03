@@ -35,4 +35,25 @@ class Person < ActiveRecord::Base
   def full_name
     first_name + ' ' + last_name
   end
+
+  # callbacks
+  before_create :check_subscription_product_limit
+
+  private
+
+  def check_subscription_product_limit
+    product = User.current&.admin_subscription_product
+    if product.nil?
+      errors.add(:base, "You don't have a subscription")
+      Rails.logger.warn "User #{User.current_id} tried to create a Person but had no subscription_product."
+      return false
+    end
+    return true unless product.person_limited
+    if product.person_limit <= Person.where(user_id: User.current_id).count
+      # only runs when the person is over their limit
+      errors.add(:base, 'You have exceeded the limit for your subscription.  Your Person was not saved.')
+      return false
+    end
+    true
+  end
 end

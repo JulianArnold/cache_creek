@@ -39,7 +39,7 @@ class CurriculumVitae < ActiveRecord::Base
       Rails.logger.warn "User #{User.current_id} tried to create a CV but had no subscription_product."
       return false
     end
-    # return true if product.curriculum_vitae_limited # truthy
+    # return true if !product.curriculum_vitae_limited # truthy
     return true unless product.curriculum_vitae_limited # falsey
     if product.curriculum_vitae_limit <= CurriculumVitae.where(user_id: User.current_id).count
       # only runs when the person is over their limit

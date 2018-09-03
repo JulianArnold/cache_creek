@@ -6,7 +6,7 @@ class OpportunitiesController < ApplicationController
   # GET /opportunities
   # GET /opportunities.json
   def index
-    @opportunities = findable_opportunities.order(updated_at: :desc).all
+    @opportunities = findable_opportunities.all_in_order.all
   end
 
   # GET /opportunities/1
