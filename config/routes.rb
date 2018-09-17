@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'search/index'
+  post 'search/index', as: :search_request
+
   namespace :admin do
     resources :subscription_products
     resources :subscription_plans

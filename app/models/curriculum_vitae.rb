@@ -28,8 +28,19 @@ class CurriculumVitae < ActiveRecord::Base
   validates_attachment_content_type :upload, content_type: 'application/pdf'
   # validates_attachment_content_type :upload, content_type: /\A(application\/pdf)\z/
 
+  # scopes
+  scope :all_in_order, -> { order(updated_at: :desc) }
+  scope :for_current_user, -> { where(user_id: User.current_id) }
+
   # callbacks
   before_create :check_subscription_product_limit
+
+  # class methods
+  def self.search_for(search_term)
+    where('name LIKE :term OR description LIKE :term OR upload_file_name LIKE :term', term: '%' + search_term + '%').for_current_user.map do |result|
+      { label: result.name, record: result }
+    end
+  end
 
   private
 

@@ -38,8 +38,19 @@ class Person < ActiveRecord::Base
     first_name + ' ' + last_name
   end
 
+  # scopes
+  scope :all_in_order, -> { order(updated_at: :desc) }
+  scope :for_current_user, -> { where(user_id: User.current_id) }
+
   # callbacks
   before_create :check_subscription_product_limit
+
+  # class methods
+  def self.search_for(search_term)
+    where('first_name LIKE :term OR last_name LIKE :term OR email LIKE :term OR phone LIKE :term', term: '%' + search_term + '%').for_current_user.map do |result|
+      { label: result.first_name, record: result }
+    end
+  end
 
   private
 

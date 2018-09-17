@@ -1,0 +1,16 @@
+<%= page_heading('Search Results') %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <% @search_results.each do |category, results| %>
+      <h2><%= category.to_s.pluralize %></h2>
+      <% results.each do |result| %>
+        <p>
+          <%= link_to result[:label], result[:record] %>
+          <br />
+          <%= link_to url_for(result[:record]), result[:record], class: 'text-success' %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
